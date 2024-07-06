@@ -46,6 +46,7 @@ export default function Home() {
         <button
         className="bg-emerald-800 text-white font-bold py-2 px-4 rounded hover:bg-emerald-600 transition duration-300 ease-in-out"
          onClick={handleSubmit}>Subscribe</button>
+         
       </div>
     </main>
   );
