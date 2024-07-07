@@ -1,12 +1,12 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-const inter = Inter({ subsets: ['latin'] })
-import { CSPostHogProvider } from './providers'
+// app/layout.tsx
 
-export const metadata = {
-  title: 'Newspodify',
-  description: 'Your News, Your Way',
-}
+import './globals.css'
+import { PHProvider } from './providers'
+import dynamic from 'next/dynamic'
+
+const PostHogPageView = dynamic(() => import('./PostHogPageView'), {
+  ssr: false,
+})
 
 export default function RootLayout({
   children,
@@ -15,12 +15,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <CSPostHogProvider>
-      <body className={inter.className}>
-        
-        {children}
+      <PHProvider>
+        <body>
+          <PostHogPageView /> 
+          {children}
         </body>
-      </CSPostHogProvider>
+      </PHProvider>
     </html>
   )
 }
