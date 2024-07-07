@@ -3,9 +3,24 @@
 import { useState } from "react";
 
 export default function Home() {
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState<string>("");
+    const [error, setError] = useState<string>("");
+    const [responseMessage, setResponseMessage] = useState<string>("");
+
+    const validateEmail = (email: string): boolean => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(String(email).toLowerCase());
+    };
 
     const handleSubmit = async () => {
+        if (!validateEmail(email)) {
+            setError("Please enter a valid email address.");
+            return;
+        }
+
+        setError("");
+        setResponseMessage("");
+
         try {
             const response = await fetch('/api/addemail', {
                 method: 'POST',
@@ -15,15 +30,18 @@ export default function Home() {
                 body: JSON.stringify({ email })
             });
 
-            if (response.ok) {
-                alert('Subscription successful!');
+            const data = await response.json();
+
+            if (data.message === 'Email already exists') {
+                setResponseMessage(`Subscription failed: ${data.message}`);
+            } else if (response.ok) {
+                setResponseMessage('Subscription successful!');
             } else {
-                const data = await response.json();
-                alert(`Subscription failed: ${data.error}`);
+                setResponseMessage('Subscription failed');
             }
         } catch (error) {
             console.error('Error:', error);
-            alert('An error occurred while subscribing.');
+            setResponseMessage('An error occurred while subscribing.');
         }
     };
 
@@ -39,12 +57,14 @@ export default function Home() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                 />
+                {error && <p className="text-red-500 mb-5">{error}</p>}
                 <button
                     className="bg-emerald-800 text-white font-bold py-2 px-4 rounded hover:bg-emerald-600 transition duration-300 ease-in-out"
                     onClick={handleSubmit}
                 >
                     Subscribe
                 </button>
+                {responseMessage && <p className="text-white mt-5">{responseMessage}</p>}
             </div>
         </main>
     );
