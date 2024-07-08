@@ -59,7 +59,7 @@ export default function Home() {
                 />
                 {error && <p className="text-red-500 mb-5">{error}</p>}
                 <button
-                    className="bg-emerald-800 text-blue-100 font-bold py-2 px-4 rounded hover:bg-emerald-600 transition duration-300 ease-in-out"
+                    className="bg-emerald-800 text-blue-900 font-bold py-2 px-4 rounded hover:bg-emerald-600 transition duration-300 ease-in-out"
                     onClick={handleSubmit}
                 >
                     Subscribe
