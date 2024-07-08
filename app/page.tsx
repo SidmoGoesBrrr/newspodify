@@ -46,7 +46,7 @@ export default function Home() {
     };
 
     return (
-        <main className="bg-blue-400 h-screen">
+        <main>
             <div></div>
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 align-center items-center justify-center flex flex-col">
                 <h1 className="text-3xl font-bold text-emerald-800 mb-5">Home</h1>
