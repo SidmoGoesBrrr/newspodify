@@ -56,7 +56,7 @@ const FeedbackForm: React.FC = () => {
 
   return (
     <div className="max-w-md mx-auto p-8 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-6">We'd love your feedback!</h2>
+      <h2 className="text-2xl font-bold mb-6">We&apos;d love your feedback!</h2>
       {error && <div className="bg-red-100 text-red-800 p-3 rounded mb-4">{error}</div>}
       {success && <div className="bg-green-100 text-green-800 p-3 rounded mb-4">{success}</div>}
       <form onSubmit={handleSubmit} className="space-y-4">
