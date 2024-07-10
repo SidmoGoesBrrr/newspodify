@@ -24,7 +24,7 @@ async function sendEmail(email: string) {
                     <p>Hey,</p>
                     <p>I'm Siddhant, one of the creators of Newspodify. Thank you so much for expressing your interest in our app—it means a lot to have your support at this stage.</p>
                     <p>You'll be among the first to receive access to Newspodify when we launch. We're still ironing out a few bugs and adding some exciting features, and your feedback could be invaluable to us. I'd love to hear your thoughts and use your insights to make Newspodify even better.</p>
-                    <p>Could you take a moment to fill out this <a href="https://newspodify.app/suggestions/" style="color: #4CAF50; text-decoration: none;">Google Form</a>? Alternatively, you can reply to this email with your answers to these questions:</p>
+                    <p>Could you take a moment to fill out this <a href="https://newspodify.vercel.app/suggestions/" style="color: #4CAF50; text-decoration: none;">form</a>? Alternatively, you can reply to this email with your answers to these questions:</p>
                     <ul>
                         <li>What features of Newspodify are you most excited about?</li>
                         <li>Which newsletters would you like us to add?</li>

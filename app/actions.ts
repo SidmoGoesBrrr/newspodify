@@ -9,12 +9,13 @@ export async function sendFeedback(formData: FormData) {
   const features = formData.get('features') as string;
   const newsletters = formData.get('newsletters') as string;
   const price = formData.get('price') as string;
+  const other = formData.get('other') as string;
 
   if (!name || !features || !newsletters || !price) {
     throw new Error('All fields are required.');
   }
 
   await axios.post(DISCORD_WEBHOOK_URL, {
-    content: `**Name:** ${name}\n**Features:** ${features}\n**Newsletters:** ${newsletters}\n**Price:** ${price}`,
+    content: `**Name:** ${name}\n**Features:** ${features}\n**Newsletters:** ${newsletters}\n**Price:** ${price} \n**Other:** ${other}`,
   });
 }

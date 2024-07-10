@@ -10,6 +10,7 @@ const FeedbackForm: React.FC = () => {
     features: '',
     newsletters: '',
     price: '',
+    other: '',
   });
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
@@ -27,7 +28,7 @@ const FeedbackForm: React.FC = () => {
     try {
       await sendFeedback(formDataObj);
       setSuccess('Feedback submitted successfully!');
-      setFormData({ name: '', features: '', newsletters: '', price: '' });
+      setFormData({ name: '', features: '', newsletters: '', price: '' ,other: ''});
       setError(null);
     } catch (err) {
       setError((err as Error).message);
@@ -61,7 +62,7 @@ const FeedbackForm: React.FC = () => {
       {success && <div className="bg-green-100 text-green-800 p-3 rounded mb-4">{success}</div>}
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label className="block text-sm font-medium text-gray-700">Name</label>
+          <label className="block text-sm font-medium text-gray-700">Name<span className='text-red-600 text-base'>*</span></label>
           <input
             type="text"
             name="name"
@@ -72,7 +73,7 @@ const FeedbackForm: React.FC = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">What features of Newspodify are you most excited about?</label>
+          <label className="block text-sm font-medium text-gray-700">What features would you like to see added to NewSpodify?<span className='text-red-600 text-base'>*</span></label>
           <textarea
             name="features"
             value={formData.features}
@@ -82,7 +83,7 @@ const FeedbackForm: React.FC = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">Which newsletters would you like us to add?</label>
+          <label className="block text-sm font-medium text-gray-700">Which newsletters are you keen on including in our collection?<span className='text-red-600 text-base'>*</span></label>
           <textarea
             name="newsletters"
             value={formData.newsletters}
@@ -92,7 +93,7 @@ const FeedbackForm: React.FC = () => {
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700">How much would you be willing to pay to use this product?</label>
+          <label className="block text-sm font-medium text-gray-700">How much would you be willing to pay to use this product?<span className='text-red-600 text-base'>*</span></label>
           <input
             type="text"
             name="price"
@@ -101,6 +102,17 @@ const FeedbackForm: React.FC = () => {
             className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
             required
           />
+          
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-700">Is there anything else you would like to tell us?</label>
+          <textarea
+            name="other"
+            value={formData.other}
+            onChange={handleChange}
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+          />
+
         </div>
         <div>
           <button
