@@ -5,6 +5,7 @@ const supabaseUrl = process.env.SUPABASE_URL || '';
 const supabaseAnonKey = process.env.SUPABASE_KEY || '';
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 const resendApiKey = process.env.RESEND_KEY || '';
+import { usePostHog } from 'posthog-js/react';
 
 async function sendEmail(email: string) {
     try {
@@ -57,6 +58,7 @@ async function sendEmail(email: string) {
 }
 
 export async function POST(request: NextRequest) {
+    const posthog = usePostHog();
     try {
         const body = await request.json();
         const email = body.email;
@@ -93,6 +95,7 @@ export async function POST(request: NextRequest) {
 
         
         await sendEmail(email)
+        posthog.capture("email_sent");
         return NextResponse.json({ message: 'Email sent successfully', body });
     } catch (error) {
         console.error('Failed to send email:', error);
