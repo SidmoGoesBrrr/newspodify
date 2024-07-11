@@ -1,14 +1,11 @@
 "use client";
 import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "./ui/hero-highlight";
-import { TextGenerateEffect } from "./ui/text-generate-effect";
 
 const Hero: React.FC = () => {
     return (
         <section id="hero" className="pb-20 pt-36 overflow-auto text-darkblue flex flex-col lg:flex-row items-center lg:justify-center lg:space-x-10 px-4 lg:px-20">
             <div className="lg:w-1/2 flex flex-col items-center lg:items-start mb-10 lg:mb-0">
-                <TextGenerateEffect words={"Your News, Your Way"} 
-                className="text-5xl font-extrabold text-center lg:text-left mb-6"/>
                 
                 <HeroHighlight>
                     <motion.h1
@@ -24,8 +21,11 @@ const Hero: React.FC = () => {
                             duration: 0.5,
                             ease: [0.4, 0.0, 0.2, 1],
                         }}
-                        className="text-2xl px-4 md:text-4xl lg:text-5xl font-bold text-slate-600 max-w-4xl leading-relaxed lg:leading-snug text-center lg:text-left mx-auto lg:mx-0"
-                    >
+                        className="text-xl px-4 md:text-2xl lg:text-3xl font-medium text-slate-400 max-w-4xl leading-relaxed lg:leading-snug text-center lg:text-left mx-auto lg:mx-0"
+                    >   
+                        <h1 className="text-7xl font-extrabold text-center lg:text-left lg:mb-8">
+                        Your News, Your Way
+                        </h1>
                         With Newspodify, stay updated effortlessly by turning your favorite newsletters into a unique podcast{" "}
                         <Highlight className="text-white">
                             tailored to your interests

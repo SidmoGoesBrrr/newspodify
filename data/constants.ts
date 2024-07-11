@@ -24,3 +24,22 @@ export const price_placeholders = [
     "₹199 a month",
     "₹400 a year"
 ]
+
+export const TABS = [
+    {
+      title: "Personalized News",
+      description:
+        "Step into a world of news just for you! Pick your favorite newsletters and watch them transform into a podcast that’s all about your interests.",
+      imageUrl: "/demo-illustration-3.png",
+      baseColor: "bg-blue-400",
+      secondColor: "bg-blue-600",
+    },
+    {
+      title: "On-the-Go Convenience",
+      description:
+        "Your news, your way, wherever you go! Perfect for commutes, workouts, or just chilling out, your personalized podcast is ready when you are.",
+      imageUrl: "/demo-illustration-4.png",
+      baseColor: "bg-blue-400",
+      secondColor: "bg-blue-600",
+    },
+  ];
