@@ -2,15 +2,15 @@
 
 import Hero from "@/components/Hero";
 import Waitlist from "@/components/Waitlist";
-import Footer from "@/components/Footer";
+import FeaturesGallery from "@/components/FeaturesGallery";
 
 export default function Home() {
     return (
         <main>
-            <div>
+            <div className="pb-20">
                 <Hero />
+                <FeaturesGallery />
                 <Waitlist />
-                <Footer />
             </div>
         </main>
     );

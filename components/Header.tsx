@@ -1,34 +1,45 @@
-import Image from "next/image"
-import Link from "next/link"
-import { NAV_LINKS } from "@/data/constants"
-const Header = () => {
-    return (
-        <nav className="flexBetween max-container padding-container relative z-30 py-5">
-            <Link href='/'>
-                <Image src="/nsp_logo.jpg" alt="logo" width={35} height={29} />
+"use client";
+import { useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { NAV_LINKS } from "@/data/constants";
+import { FaHourglassEnd } from "react-icons/fa";
 
+const Header = () => {
+    const [menuOpen, setMenuOpen] = useState(false);
+
+    return (
+        <nav className="flex justify-between items-center max-w-7xl mx-auto px-6 py-5">
+            <Link href="/">
+                <Image src="/nsp_logo.jpg" alt="logo" width={100} height={30} />
             </Link>
-            <ul className="hidden h-full gap-12 lg:flex">
+            <ul className={`lg:flex gap-8 ${menuOpen ? "block" : "hidden"}`}>
                 {NAV_LINKS.map((link) => (
-                    <Link href={link.href} key={link.key} className="regular-16 text-gray-50 flex-center cursor-pointer pb-1.5 transition-all hover:font-bold">
-                        {link.label}
-                    </Link>
+                    <li key={link.key}>
+                        <Link href={link.href} className="text-gray-800 hover:text-black transition-all text-lg hover:font-bold">
+                            {link.label}
+                        </Link>
+                    </li>
                 ))}
             </ul>
-            <div className="lg:flexCenter hidden">
-                
-
-
+            <div className="hidden lg:flex items-center">
+                <Link href="#waitlist" className="flex items-center bg-black text-white py-2 px-4 rounded-full hover:bg-gray-800 transition-all">
+                    <FaHourglassEnd className="mr-2" />
+                    Join Waitlist Now
+                </Link>
             </div>
-            <Image
-                src="/menu.svg"
-                alt="menu"
-                width={32}
-                height={32}
-                className="inline-block cursor-pointer lg:hidden"/>
-
+            <div className="lg:hidden">
+                <Image
+                    src="/menu.svg"
+                    alt="menu"
+                    width={32}
+                    height={32}
+                    className="cursor-pointer"
+                    onClick={() => setMenuOpen(!menuOpen)}
+                />
+            </div>
         </nav>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;
