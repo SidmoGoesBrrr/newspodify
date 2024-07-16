@@ -6,9 +6,11 @@ const Hero: React.FC = () => {
     return (
         <section id="hero" className="pb-20 pt-36 overflow-auto text-darkblue flex flex-col lg:flex-row items-center lg:justify-center lg:space-x-10 px-4 lg:px-20">
             <div className="lg:w-1/2 flex flex-col items-center lg:items-start mb-10 lg:mb-0">
-                
+            <h1 className="text-7xl font-extrabold text-center lg:text-left lg:mb-8">
+                        Your News, Your Way
+                        </h1>
                 <HeroHighlight>
-                    <motion.h1
+                    <motion.h2
                         initial={{
                             opacity: 0,
                             y: 20,
@@ -23,14 +25,12 @@ const Hero: React.FC = () => {
                         }}
                         className="text-xl px-4 md:text-2xl lg:text-3xl font-medium text-slate-400 max-w-4xl leading-relaxed lg:leading-snug text-center lg:text-left mx-auto lg:mx-0"
                     >   
-                        <h1 className="text-7xl font-extrabold text-center lg:text-left lg:mb-8">
-                        Your News, Your Way
-                        </h1>
+                        
                         With Newspodify, stay updated effortlessly by turning your favorite newsletters into a unique podcast{" "}
                         <Highlight className="text-white">
                             tailored to your interests
                         </Highlight>
-                    </motion.h1>
+                    </motion.h2>
                 </HeroHighlight>
             </div>
             <div className="lg:w-1/2 flex justify-center lg:justify-end">
