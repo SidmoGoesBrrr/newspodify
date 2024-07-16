@@ -1,13 +1,13 @@
 "use client";
 import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "./ui/hero-highlight";
-
+import { TextGenerateEffect } from "./ui/text-generate-effect";
 const Hero: React.FC = () => {
     return (
         <section id="hero" className="pb-20 pt-36 overflow-auto text-darkblue flex flex-col lg:flex-row items-center lg:justify-center lg:space-x-10 px-4 lg:px-20">
             <div className="lg:w-1/2 flex flex-col items-center lg:items-start mb-10 lg:mb-0">
             <h1 className="text-7xl font-extrabold text-center lg:text-left lg:mb-8">
-                        Your News, Your Way
+                        <TextGenerateEffect words="Your News, Your Way" />
                         </h1>
                 <HeroHighlight>
                     <motion.h2
