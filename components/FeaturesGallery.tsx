@@ -15,10 +15,10 @@ interface Tab {
 
 export default function FeaturesGallery() {
   return (
-    <div className="container mx-auto py-12 text-center">
-      <div className="flex flex-wrap justify-center gap-8">
+    <div className="container mx-auto py-6 text-center">
+      <div className="flex flex-wrap mx-auto justify-center">
         {TABS.map((tab, idx) => (
-          <CardContainer key={idx} className="inter-var mx-4 my-4">
+          <CardContainer key={idx} className="inter-var mx-4">
             <CardBody className="bg-gray-50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
               <CardItem
                 translateZ="50"

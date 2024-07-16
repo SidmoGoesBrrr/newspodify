@@ -42,6 +42,22 @@ export const TABS = [
       baseColor: "bg-blue-400",
       secondColor: "bg-blue-600",
     },
+    {
+      title: "Curated Summaries",
+      description:
+        "Get the essence of each story with our concise and engaging summaries. Stay updated without the overwhelm, as NewsPodify delivers the key points you need to know.",
+      imageUrl: "/demo-illustration-4.png",
+      baseColor: "bg-blue-400",
+      secondColor: "bg-blue-600",
+    },
+    {
+      title: "Ad-Free Listening",
+      description:
+        "Enjoy uninterrupted news with our ad-free experience. Focus on the stories that matter without any distractions, making your listening experience seamless and enjoyable.",
+      imageUrl: "/demo-illustration-4.png",
+      baseColor: "bg-blue-400",
+      secondColor: "bg-blue-600",
+    },
   ];
 
   export const NAV_LINKS = [
@@ -50,4 +66,27 @@ export const TABS = [
     { href: '/', key: 'features', label: 'Features' },
     { href: '/', key: 'waitlist ', label: 'Waitlist ' },
     { href: '/', key: 'faq', label: 'FAQ' },
+  ];
+
+  export const faqs = [
+    {
+      question: "What is NewsPodify?",
+      answer:
+        "NewsPodify is a service that collects news from various newsletters and summarizes them into podcasts for users to listen to instead of reading.",
+    },
+    {
+      question: "How does NewsPodify work?",
+      answer:
+        "NewsPodify uses advanced algorithms to scan and summarize content from newsletters. It then compiles these summaries into podcast episodes, providing users with concise audio updates.",
+    },
+    {
+      question: "Is NewsPodify free to use?",
+      answer:
+        "Yes, NewsPodify offers a basic free plan with limited features. Premium plans with additional functionalities are also available.",
+    },
+    {
+      question: "Can I customize the content in my NewsPodify podcast?",
+      answer:
+        "Currently, NewsPodify offers limited customization options. Users can choose categories of interest, but detailed customization features are in development.",
+    },
   ];
