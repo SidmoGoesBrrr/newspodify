@@ -43,3 +43,11 @@ export const TABS = [
       secondColor: "bg-blue-600",
     },
   ];
+
+  export const NAV_LINKS = [
+    { href: '/', key: 'home', label: 'Home' },
+    { href: '/', key: 'what_is_nsp', label: 'What is Newspodify' },
+    { href: '/', key: 'features', label: 'Features' },
+    { href: '/', key: 'waitlist ', label: 'Waitlist ' },
+    { href: '/', key: 'faq', label: 'FAQ' },
+  ];
