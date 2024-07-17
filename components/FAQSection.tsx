@@ -1,26 +1,27 @@
+// FAQSection.tsx
 "use client";
 
 import React from "react";
+import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { faqs } from "@/data/constants";
-import { motion } from "framer-motion";
 
 const FAQSection = () => {
   return (
-    <div className="container mx-auto py-12 px-4 md:px-0" id="faq">
-      <h1 className="text-4xl font-bold text-center mb-12">Frequently Asked Questions</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {faqs.map((faq, index) => (
-          <motion.div
-            key={index}
-            className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
-          >
-            <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-gray-100">{faq.question}</h2>
-            <p className="text-gray-700 dark:text-gray-300">{faq.answer}</p>
-          </motion.div>
-        ))}
+    <div className="container mx-auto py-12 px-4 md:px-0">
+      <h1 className="text-5xl font-bold text-center mb-12 text-gray-900 dark:text-white">Frequently Asked Questions</h1>
+      <div className="flex justify-center">
+        <Accordion type="single" collapsible className="w-4/5">
+          {faqs.map((faq, index) => (
+            <AccordionItem key={index} value={`item-${index}`} className="border-b border-gray-300 dark:border-gray-700 last:border-none">
+              <AccordionTrigger className="flex justify-between items-center text-2xl text-gray-800 dark:text-gray-200 py-4">
+                {faq.question}
+              </AccordionTrigger>
+              <AccordionContent className="text-xl text-gray-700 dark:text-gray-300 p-3">
+                {faq.answer}
+              </AccordionContent>
+            </AccordionItem>
+          ))}
+        </Accordion>
       </div>
     </div>
   );
