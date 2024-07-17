@@ -11,12 +11,12 @@ const Header = () => {
     return (
         <nav className="flex justify-between items-center max-w-7xl mx-auto px-6 py-5">
             <Link href="/">
-                <Image src="/nsp_logo.jpg" alt="logo" width={100} height={30} />
+                <Image src="/nsp_logo.jpg" alt="logo" width={60} height={50} />
             </Link>
             <ul className={`lg:flex gap-8 ${menuOpen ? "block" : "hidden"}`}>
                 {NAV_LINKS.map((link) => (
                     <li key={link.key}>
-                        <Link href={link.href} className="text-slate-300 hover:text-black transition-all text-lg hover:font-bold">
+                        <Link href={link.href} className="text-slate-300 hover:text-slate-50 transition-all text-lg hover:font-bold hover:text-xl">
                             {link.label}
                         </Link>
                     </li>
