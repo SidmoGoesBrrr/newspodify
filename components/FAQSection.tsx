@@ -4,10 +4,10 @@
 import React from "react";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
 import { faqs } from "@/data/constants";
-
+ 
 const FAQSection = () => {
   return (
-    <div className="container mx-auto py-12 px-4 md:px-0">
+    <div className="container mx-auto py-12 px-4 md:px-0" id="faq">
       <h1 className="text-5xl font-bold text-center mb-12 text-gray-900 dark:text-white">Frequently Asked Questions</h1>
       <div className="flex justify-center">
         <Accordion type="single" collapsible className="w-4/5">
