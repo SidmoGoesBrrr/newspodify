@@ -15,7 +15,7 @@ interface Tab {
 
 export default function FeaturesGallery() {
   return (
-    <div className="container mx-auto py-6 text-center">
+    <div className="container mx-auto py-6 text-center" id="features">
       <div className="flex flex-wrap mx-auto justify-center">
         {TABS.map((tab, idx) => (
           <CardContainer key={idx} className="inter-var mx-4">

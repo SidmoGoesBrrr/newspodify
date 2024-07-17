@@ -16,14 +16,14 @@ const Header = () => {
             <ul className={`lg:flex gap-8 ${menuOpen ? "block" : "hidden"}`}>
                 {NAV_LINKS.map((link) => (
                     <li key={link.key}>
-                        <Link href={link.href} className="text-gray-800 hover:text-black transition-all text-lg hover:font-bold">
+                        <Link href={link.href} className="text-slate-300 hover:text-black transition-all text-lg hover:font-bold">
                             {link.label}
                         </Link>
                     </li>
                 ))}
             </ul>
             <div className="hidden lg:flex items-center">
-                <Link href="#waitlist" className="flex items-center bg-black text-white py-2 px-4 rounded-full hover:bg-gray-800 transition-all">
+                <Link href="#waitlist" className="flex items-center bg-slate-400 text-slate-50 py-2 px-4 rounded-full hover:bg-gray-700 transition-all">
                     <FaHourglassEnd className="mr-2" />
                     Join Waitlist Now
                 </Link>

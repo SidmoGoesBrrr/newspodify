@@ -62,10 +62,10 @@ export const TABS = [
 
   export const NAV_LINKS = [
     { href: '/', key: 'home', label: 'Home' },
-    { href: '/', key: 'what_is_nsp', label: 'What is Newspodify' },
-    { href: '/', key: 'features', label: 'Features' },
-    { href: '/', key: 'waitlist ', label: 'Waitlist ' },
-    { href: '/', key: 'faq', label: 'FAQ' },
+    { href: '#description', key: 'what_is_nsp', label: 'What is Newspodify' },
+    { href: '#features', key: 'features', label: 'Features' },
+    { href: '#waitlist ', key: 'waitlist ', label: 'Waitlist ' },
+    { href: '#faq', key: 'faq', label: 'FAQ' },
   ];
 
   export const faqs = [

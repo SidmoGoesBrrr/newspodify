@@ -46,7 +46,7 @@ const Waitlist: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center" id="waitlist">
             <EmailForm onSubmit={handleSubmit} error={error} />
             <ResponseMessage message={responseMessage} />
         </div>

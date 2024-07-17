@@ -6,7 +6,7 @@ import { faqs } from "@/data/constants";
 
 const FAQSection = () => {
   return (
-    <div className="container mx-auto py-12">
+    <div className="container mx-auto py-12" id="faq">
       <h1 className="text-4xl font-bold text-center mb-8">FAQ</h1>
       <div className="grid gap-8">
         {faqs.map((faq, index) => (
