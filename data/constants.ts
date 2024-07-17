@@ -31,32 +31,24 @@ export const TABS = [
       description:
         "Step into a world of news just for you! Pick your favorite newsletters and watch them transform into a podcast that’s all about your interests.",
       imageUrl: "/demo-illustration-3.png",
-      baseColor: "bg-blue-400",
-      secondColor: "bg-blue-600",
     },
     {
       title: "On-the-Go Convenience",
       description:
         "Your news, your way, wherever you go! Perfect for commutes, workouts, or just chilling out, your personalized podcast is ready when you are.",
       imageUrl: "/demo-illustration-4.png",
-      baseColor: "bg-blue-400",
-      secondColor: "bg-blue-600",
     },
     {
       title: "Curated Summaries",
       description:
         "Get the essence of each story with our concise and engaging summaries. Stay updated without the overwhelm, as NewsPodify delivers the key points you need to know.",
       imageUrl: "/demo-illustration-4.png",
-      baseColor: "bg-blue-400",
-      secondColor: "bg-blue-600",
     },
     {
       title: "Ad-Free Listening",
       description:
         "Enjoy uninterrupted news with our ad-free experience. Focus on the stories that matter without any distractions, making your listening experience seamless and enjoyable.",
       imageUrl: "/demo-illustration-4.png",
-      baseColor: "bg-blue-400",
-      secondColor: "bg-blue-600",
     },
   ];
 
