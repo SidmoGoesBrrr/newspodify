@@ -3,8 +3,9 @@
 
 import React from "react";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import { motion } from "framer-motion";
 import { faqs } from "@/data/constants";
- 
+
 const FAQSection = () => {
   return (
     <div className="container mx-auto py-12 px-4 md:px-0" id="faqs">
@@ -17,8 +18,16 @@ const FAQSection = () => {
                 {faq.question}
               </AccordionTrigger>
 
-              <AccordionContent className="text-xl text-gray-300 p-3">
-                {faq.answer}
+              <AccordionContent asChild>
+                <motion.div
+                  initial={{ height: 0, opacity: 0 }}
+                  animate={{ height: 'auto', opacity: 1 }}
+                  exit={{ height: 0, opacity: 0 }}
+                  transition={{ duration: 1 }}
+                  className="text-xl text-gray-300 p-3"
+                >
+                  {faq.answer}
+                </motion.div>
               </AccordionContent>
             </AccordionItem>
           ))}

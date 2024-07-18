@@ -29,7 +29,7 @@ export const TABS = [
     {
       title: "Personalized News",
       description:
-        "Step into a world of news just for you! Pick your favorite newsletters and watch them transform into a podcast that’s all about your interests.",
+        "Step into a world of news made just for you! Pick your favorite newsletters and watch them turn into a podcast that’s all about your interests.",
       imageUrl: "/demo-illustration-3.png",
     },
     {
