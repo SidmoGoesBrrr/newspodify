@@ -26,30 +26,31 @@ export const price_placeholders = [
 ]
 
 export const TABS = [
-    {
-      title: "Personalized News",
-      description:
-        "Step into a world of news made just for you! Pick your favorite newsletters and watch them turn into a podcast that’s all about your interests.",
-      imageUrl: "/demo-illustration-3.png",
-    },
-    {
-      title: "On-the-Go Convenience",
-      description:
-        "Your news, your way, wherever you go! Perfect for commutes, workouts, or just chilling out, your personalized podcast is ready when you are.",
-      imageUrl: "/demo-illustration-4.png",
-    },
-    {
-      title: "Curated Summaries",
-      description:
-        "Get the essence of each story with our concise and engaging summaries. Stay updated without the overwhelm, as NewsPodify delivers the key points you need to know.",
-      imageUrl: "/demo-illustration-4.png",
-    },
-    {
-      title: "Ad-Free Listening",
-      description:
-        "Enjoy uninterrupted news with our ad-free experience. Focus on the stories that matter without any distractions, making your listening experience seamless and enjoyable.",
-      imageUrl: "/demo-illustration-4.png",
-    },
+  {
+    title: "Personalized Newsletters",
+    description:
+      "Transform your favorite newsletters into a tailored podcast. Choose the newsletters you love, and Newspodify will create a personalized listening experience just for you.",
+    imageUrl: "/demo-illustration-3.png",
+  },
+  {
+    title: "Effortless Updates",
+    description:
+      "Stay informed effortlessly! Newspodify curates and converts your chosen newsletters into an easy-to-listen podcast, perfect for your busy lifestyle.",
+    imageUrl: "/demo-illustration-4.png",
+  },
+  {
+    title: "Bite-Sized Insights",
+    description:
+      "Receive concise and engaging summaries of your newsletters. Newspodify delivers the key insights, ensuring you stay updated without the need to read through lengthy articles.",
+    imageUrl: "/demo-illustration-4.png",
+  },
+  {
+    title: "Ad-Free Listening",
+    description:
+      "Enjoy uninterrupted news with our ad-free experience. Focus on the stories that matter without any distractions, making your listening experience seamless and enjoyable.",
+    imageUrl: "/demo-illustration-4.png",
+  },
+  
   ];
 
   export const NAV_LINKS = [

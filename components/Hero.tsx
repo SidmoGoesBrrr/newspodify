@@ -32,18 +32,17 @@ const Hero: React.FC = () => {
                     >
 
                         With Newspodify,stay updated effortlessly by turning your favorite newsletters into a unique podcast{" "}
-                        <br></br>
                         <Highlight className="text-[#89b6c5f4]">
                             tailored to your interests
                         </Highlight>
                     </motion.h2>
                 </HeroHighlight>
                 <div className="flex flex-col md:flex-row md:space-x-4 mt-6 md:mt-8 items-center justify-center"> {/* Updated flex styling */}
-                    <Link href="#waitlist" className="flex items-center bg-slate-400 text-slate-50 py-3 px-6 rounded-full hover:bg-gray-700 transition-all text-lg md:text-xl mb-4 md:mb-0">
+                    <Link href="#waitlist" className="flex items-center bg-slate-400 text-slate-50 py-3 px-6 rounded-full hover:bg-gray-700 hover:scale-95 transition-all text-lg md:text-xl mb-4 md:mb-0">
                         <FaHourglassEnd className="mr-2" />
                         Join Waitlist Now
                     </Link>
-                    <Link href="#description" className="flex items-center bg-blue-500 text-white py-3 px-6 rounded-full hover:bg-blue-700 transition-all text-lg md:text-xl">
+                    <Link href="#description" className="flex items-center bg-blue-500 text-white py-3 px-6 rounded-full hover:bg-blue-700 hover:scale-95 transition-all text-lg md:text-xl">
                         <FaInfoCircle className="mr-2" />
                         Learn More
                     </Link>

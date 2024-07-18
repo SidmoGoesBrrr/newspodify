@@ -23,7 +23,7 @@ const Header = () => {
                 ))}
             </ul>
             <div className="hidden lg:flex items-center">
-                <Link href="#waitlist" className="flex items-center bg-slate-400 text-slate-50 py-2 px-4 rounded-full hover:bg-gray-700 transition-all">
+                <Link href="#waitlist" className="flex items-center bg-slate-400 text-slate-50 py-2 px-4 rounded-full hover:bg-gray-700  hover:scale-125 transition-all">
                     <FaHourglassEnd className="mr-2" />
                     Join Waitlist Now
                 </Link>
