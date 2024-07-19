@@ -4,7 +4,7 @@ import { HeroHighlight, Highlight } from "./ui/hero-highlight";
 import BlurIn from "./ui/BlurIn";
 import Link from 'next/link';
 import { FaHourglassEnd, FaInfoCircle } from 'react-icons/fa';
-
+import Image from "next/image";
 const Hero: React.FC = () => {
     return (
         <section id="hero" className="pb-20 lg:pt-36 md:pt-24 pt-20 overflow-auto text-darkblue flex flex-col lg:flex-row items-center justify-center lg:space-x-10 px-4 lg:px-20">
@@ -49,10 +49,12 @@ const Hero: React.FC = () => {
                 </div>
             </div>
             <div className="w-full lg:w-1/2 flex justify-center lg:justify-end mt-8 lg:mt-0">
-                <img
+                <Image
                     src="/hero.png"
                     alt="Newspodify in action"
                     className="w-full max-w-full h-auto object-cover rounded-lg"
+                    width={1440}
+                    height={1440}
                 />
             </div>
 

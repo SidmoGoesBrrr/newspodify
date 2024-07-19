@@ -52,7 +52,7 @@ const Waitlist: React.FC = () => {
                 Join now to get notified when Newspodify is out.
             </p>
             <p className="text-center lg:text-xl md:text-base sm:text-sm mb-1">
-                We are still working on finishing the product and if you sign up on the waitlist, you'll be the first to get notified.
+                We are still working on finishing the product and if you sign up on the waitlist, you&apos;ll be the first to get notified.
             </p>
             <EmailForm onSubmit={handleSubmit} error={error} responseMessage={responseMessage} />
             <Meteors number={40}/>

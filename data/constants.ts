@@ -30,7 +30,7 @@ export const features = [
     title: "Personalized Newsletters",
     description:
       "Transform your favorite newsletters into a tailored podcast. Choose the newsletters you love, and Newspodify will create a personalized listening experience just for you.",
-    imageUrl: "/diff_newsletters.png",
+    imageUrl: "/personalisation.webp",
   },
   {
     title: "Effortless Updates",
