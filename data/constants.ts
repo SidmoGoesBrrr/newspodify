@@ -25,12 +25,12 @@ export const price_placeholders = [
     "₹400 a year"
 ]
 
-export const TABS = [
+export const features = [
   {
     title: "Personalized Newsletters",
     description:
       "Transform your favorite newsletters into a tailored podcast. Choose the newsletters you love, and Newspodify will create a personalized listening experience just for you.",
-    imageUrl: "/mobile.webp",
+    imageUrl: "/diff_newsletters.png",
   },
   {
     title: "Effortless Updates",
@@ -42,7 +42,7 @@ export const TABS = [
     title: "Bite-Sized Insights",
     description:
       "Receive concise and engaging summaries of your newsletters. Newspodify delivers the key insights, ensuring you stay updated without the need to read through lengthy articles.",
-    imageUrl: "/demo-illustration-4.png",
+    imageUrl: "/mobile.webp",
   },
   {
     title: "Ad-Free Listening",

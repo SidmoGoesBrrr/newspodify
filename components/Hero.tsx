@@ -48,13 +48,14 @@ const Hero: React.FC = () => {
                     </Link>
                 </div>
             </div>
-            <div className="lg:w-1/2 flex justify-center lg:justify-end mt-8 lg:mt-0"> {/* Adjusted margin for image */}
+            <div className="w-full lg:w-1/2 flex justify-center lg:justify-end mt-8 lg:mt-0">
                 <img
-                    src="/hero.jpg"
+                    src="/hero.png"
                     alt="Newspodify in action"
-                    className="h-auto object-cover rounded-lg shadow-lg"
+                    className="w-full max-w-full h-auto object-cover rounded-lg"
                 />
             </div>
+
         </section>
     );
 };
