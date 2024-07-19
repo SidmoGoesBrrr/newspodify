@@ -30,13 +30,13 @@ export const TABS = [
     title: "Personalized Newsletters",
     description:
       "Transform your favorite newsletters into a tailored podcast. Choose the newsletters you love, and Newspodify will create a personalized listening experience just for you.",
-    imageUrl: "/demo-illustration-3.png",
+    imageUrl: "/mobile.webp",
   },
   {
     title: "Effortless Updates",
     description:
       "Stay informed effortlessly! Newspodify curates and converts your chosen newsletters into an easy-to-listen podcast, perfect for your busy lifestyle.",
-    imageUrl: "/demo-illustration-4.png",
+    imageUrl: "/commute.webp",
   },
   {
     title: "Bite-Sized Insights",
@@ -48,7 +48,7 @@ export const TABS = [
     title: "Ad-Free Listening",
     description:
       "Enjoy uninterrupted news with our ad-free experience. Focus on the stories that matter without any distractions, making your listening experience seamless and enjoyable.",
-    imageUrl: "/demo-illustration-4.png",
+    imageUrl: "/noads.webp",
   },
   
   ];
