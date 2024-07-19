@@ -1,7 +1,6 @@
 import { useState } from "react";
-
 import EmailForm from "./EmailForm";
-import ResponseMessage from "./ResponseMessage";
+import { Meteors } from "./ui/meteors";
 
 const Waitlist: React.FC = () => {
     const [error, setError] = useState<string>("");
@@ -46,11 +45,24 @@ const Waitlist: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col items-center" id="waitlist">
-            <EmailForm onSubmit={handleSubmit} error={error} />
-            <ResponseMessage message={responseMessage} />
+        <div className="flex flex-col relative px-4 py-8 h-full overflow-hidden justify-end items-center" id="waitlist">
+            
+     
+            <p className="text-center lg:text-4xl md:text-3xl sm:text-xl font-bold mb-2">
+                Join now to get notified when Newspodify is out.
+            </p>
+            <p className="text-center lg:text-xl md:text-base sm:text-sm mb-1">
+                We are still working on finishing the product and if you sign up on the waitlist, you'll be the first to get notified.
+            </p>
+            <EmailForm onSubmit={handleSubmit} error={error} responseMessage={responseMessage} />
+            <Meteors number={40}/>
         </div>
     );
 };
 
 export default Waitlist;
+
+interface ResponseMessageProps {
+    message: string;
+}
+

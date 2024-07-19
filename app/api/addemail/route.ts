@@ -46,7 +46,7 @@ async function sendEmail(email: string) {
                 </footer>
             </body>`
 
-            ,
+                ,
             },
             {
                 headers: {
@@ -63,7 +63,7 @@ async function sendEmail(email: string) {
 }
 
 export async function POST(request: NextRequest) {
-    
+
     try {
         const body = await request.json();
         const email = body.email;
@@ -92,13 +92,13 @@ export async function POST(request: NextRequest) {
         const { data, error: insertError } = await supabase
             .from('users')
             .insert([
-                { email: email, email_sent: true }
+                { email: email, email_sent: true, created_at: new Date() }
             ])
             .select();
 
         if (insertError) throw insertError;
 
-        
+
         await sendEmail(email)
         client.capture({
             distinctId: email,
