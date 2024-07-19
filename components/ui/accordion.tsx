@@ -18,13 +18,14 @@ export function FAQAccordion() {
                 {isOpen ? <MinusIcon /> : <PlusIcon />}
               </div>
             )}
+            className="my-accordion-item-background"
             title={
               <div className="flex items-center justify-between w-full">
-                <span className="text-left text-lg md:text-2xl">{faq.question}</span>
+                <span className="text-left text-lg md:text-2xl my-question-color">{faq.question}</span>
               </div>
             }
           >
-            <div className="text-left text-base md:text-xl ml-3">
+            <div className="text-left text-base md:text-xl ml-6 my-accordion-item-content">
               {faq.answer}
             </div>
           </AccordionItem>

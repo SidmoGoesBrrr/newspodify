@@ -63,23 +63,23 @@ export const features = [
 
   export const faqs = [
     {
-      question: "What is NewsPodify?",
+      question: "What is Newspodify?",
       answer:
-        "NewsPodify is a service that collects news from various newsletters and summarizes them into podcasts for users to listen to instead of reading.",
+        "Newspodify is a service that collects news from various newsletters and summarizes them into podcasts for users to listen to instead of reading.",
     },
     {
-      question: "How does NewsPodify work?",
+      question: "How does Newspodify work?",
       answer:
-        "NewsPodify uses advanced algorithms to scan and summarize content from newsletters. It then compiles these summaries into podcast episodes, providing users with concise audio updates.",
+        "Newspodify uses advanced algorithms to scan and summarize content from newsletters. It then compiles these summaries into podcast episodes, providing users with concise audio updates.",
     },
     {
-      question: "Is NewsPodify free to use?",
+      question: "Is Newspodify free to use?",
       answer:
-        "Yes, NewsPodify offers a basic free plan with limited features. Premium plans with additional functionalities are also available.",
+        "Yes, Newspodify offers a basic free plan with limited features. Premium plans with additional functionalities are also available.",
     },
     {
-      question: "Can I customize the content in my NewsPodify podcast?",
+      question: "Can I customize the content in my Newspodify podcast?",
       answer:
-        "Currently, NewsPodify offers limited customization options. Users can choose categories of interest, but detailed customization features are in development.",
+        "Currently, Newspodify offers limited customization options. Users can choose categories of interest, but detailed customization features are in development.",
     },
   ];

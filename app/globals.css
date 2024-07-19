@@ -52,6 +52,30 @@ button:hover {
   background-color: rgb(var(--secondary-rgb));
 }
 
+
+/* Accordion Item Background and Text Colors */
+.my-question-color {
+  color: #d3d0d0d1; /* Light gray for good contrast on dark backgrounds */
+}
+
+.my-accordion-item-background, .my-accordion-item-background * {
+  background-color: transparent; /* Dark gray for a modern, sleek look */
+}
+
+.my-accordion-item-background:hover * {
+  background-color: transparent; /* Slightly lighter gray for hover effect */
+}
+
+/* Accordion Item Content Text Color */
+.my-accordion-item-content {
+  color: #E0E0E0; /* Slightly lighter gray for better readability */
+}
+
+/* Optional: Add active state */
+.my-accordion-item-active, .my-accordion-item-active * {
+  background-color: #3A3A3A; /* Darker gray for the active state */
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
