@@ -12,7 +12,7 @@ const Description = () => {
 
         <SectionHeader text="Introducing Newspodify" />
         <p className="text-xl">
-          Newspodify is an innovative app designed to revolutionize your content consumption experience. By seamlessly aggregating articles, blogs, newsletters, and more from your favorite sources, Newspodify converts written content into engaging audio format. Now, you can stay informed and entertained simply by listening—whether you're on the go, at the gym, or relaxing at home. With Newspodify, you receive all your favorite content in audio form, making it easier than ever to stay up-to-date and enjoy diverse information without having to read a single word. Experience content like never before—anytime, anywhere, with Newspodify.
+          Newspodify is an innovative app designed to revolutionize your content consumption experience. By seamlessly aggregating articles, blogs, newsletters, and more from your favorite sources, Newspodify converts written content into engaging audio format. Now, you can stay informed and entertained simply by listening—whether you&apos;re on the go, at the gym, or relaxing at home. With Newspodify, you receive all your favorite content in audio form, making it easier than ever to stay up-to-date and enjoy diverse information without having to read a single word. Experience content like never before—anytime, anywhere, with Newspodify.
         </p>
         <div className="h-screen py-20 w-full">
           <LayoutGrid cards={cards} />
@@ -22,7 +22,7 @@ const Description = () => {
             We include popular newsletters like The Hustle, The 3-2-1 Newsletter and more.
           </p>
           <p className="text-center text-sm mb-4">
-            We're always open to suggestions! If you have a favorite newsletter you want to hear on Newspodify, let us know.
+            We&apos;re always open to suggestions! If you have a favorite newsletter you want to hear on Newspodify, let us know.
           </p>
           <Link href="/suggestions">
             <button className="bg-blue-600 text-white font-bold py-2 px-4 rounded">
@@ -52,7 +52,7 @@ const SkeletonOne = () => {
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        The Hustle is a daily newsletter that promises "business and tech in 5 minutes or less."
+        The Hustle is a daily newsletter that promises &quot;business and tech in 5 minutes or less.&quot;
       </p>
     </div>
   );
@@ -66,7 +66,7 @@ const SkeletonTwo = () => {
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Why We Buy is a biweekly (twice a week) newsletter in which “Customer Whisperer” Katelyn Bourgoin shares tips that help marketers understand buyer psychology.
+        Why We Buy is a biweekly (twice a week) newsletter in which &quot;Customer Whisperer&quot; Katelyn Bourgoin shares tips that help marketers understand buyer psychology.
       </p>
     </div>
   );
@@ -79,7 +79,7 @@ const SkeletonThree = () => {
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        NYT's The Morning, with 17 million readers, is the world's top newsletter, offering a daily briefing on global news, insights, and diverse topics.
+        NYT&apos;s The Morning, with 17 million readers, is the world's top newsletter, offering a daily briefing on global news, insights, and diverse topics.
       </p>
     </div>
   );
