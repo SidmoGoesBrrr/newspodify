@@ -47,12 +47,11 @@ const SkeletonOne = () => {
   return (
     <div>
       <p className="font-bold md:text-4xl text-xl text-white">
-        House in the woods
+      The Hustle
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A serene and tranquil retreat, this house in the woods offers a peaceful
-        escape from the hustle and bustle of city life.
+      The Hustle is a daily newsletter that promises "business and tech in 5 minutes or less."
       </p>
     </div>
   );
@@ -62,13 +61,11 @@ const SkeletonTwo = () => {
   return (
     <div>
       <p className="font-bold md:text-4xl text-xl text-white">
-        House above the clouds
+      Why We Buy
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        Perched high above the world, this house offers breathtaking views and a
-        unique living experience. It&apos;s a place where the sky meets home,
-        and tranquility is a way of life.
+      Why We Buy is a biweekly (twice a week) newsletter in which “Customer Whisperer” Katelyn Bourgoin shares tips that help marketers understand buyer psychology. 
       </p>
     </div>
   );
@@ -77,12 +74,11 @@ const SkeletonThree = () => {
   return (
     <div>
       <p className="font-bold md:text-4xl text-xl text-white">
-        Greens all over
+      NYT&apos;s The Morning
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A house surrounded by greenery and nature&apos;s beauty. It&apos;s the
-        perfect place to relax, unwind, and enjoy life.
+      NYT's The Morning, with 17 million readers, is the world's top newsletter, offering a daily briefing on global news, insights, and diverse topics. 
       </p>
     </div>
   );
@@ -91,12 +87,11 @@ const SkeletonFour = () => {
   return (
     <div>
       <p className="font-bold md:text-4xl text-xl text-white">
-        Rivers are serene
+      The 3-2-1 Newsletter by James Clear
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        A house by the river is a place of peace and tranquility. It&apos;s the
-        perfect place to relax, unwind, and enjoy life.
+      James Clear, the mind behind the blockbuster productivity book, Atomic Habits, delivers his 3-2-1 newsletter every Thursday. It&apos;s a quick read packed with 3 insights, 2 quotes, and 1 thought-provoking question.
       </p>
     </div>
   );
@@ -108,7 +103,7 @@ const cards = [
     content: <SkeletonOne />,
     className: "md:col-span-2",
     thumbnail:
-      "https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "/hustle.png",
   },
   {
     id: 2,
