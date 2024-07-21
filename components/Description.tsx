@@ -79,7 +79,7 @@ const SkeletonThree = () => {
       </p>
       <p className="font-normal text-base text-white"></p>
       <p className="font-normal text-base my-4 max-w-lg text-neutral-200">
-        NYT&apos;s The Morning, with 17 million readers, is the world's top newsletter, offering a daily briefing on global news, insights, and diverse topics.
+        NYT&apos;s The Morning, with 17 million readers, is the world&apos;s top newsletter, offering a daily briefing on global news, insights, and diverse topics.
       </p>
     </div>
   );
