@@ -1,6 +1,7 @@
 import { useState } from "react";
 import EmailForm from "./EmailForm";
 import { Meteors } from "./ui/meteors";
+import SectionHeader from "./ui/section-headers";
 
 const Waitlist: React.FC = () => {
     const [error, setError] = useState<string>("");
@@ -45,9 +46,8 @@ const Waitlist: React.FC = () => {
     };
 
     return (
-        <div className="flex flex-col relative px-4 py-8 h-full overflow-hidden justify-end items-center" id="waitlist">
-            
-     
+        <div className="flex flex-col relative px-4 py-8 h-full overflow-hidden justify-end items-center" id="waitlist">     
+            <SectionHeader text="Be The First To Know" />
             <p className="text-center lg:text-4xl md:text-3xl sm:text-xl font-bold mb-2">
                 Join now to get notified when Newspodify is out.
             </p>

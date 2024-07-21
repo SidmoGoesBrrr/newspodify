@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { NAV_LINKS } from "@/data/constants";
 import { FaHourglassEnd } from "react-icons/fa";
+import SmoothScrollLink from "./ui/SmoothScrolLink";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -16,9 +17,9 @@ const Header = () => {
             <ul className={`lg:flex gap-8 ${menuOpen ? "block" : "hidden"}`}>
                 {NAV_LINKS.map((link) => (
                     <li key={link.key}>
-                        <Link href={link.href} className="text-slate-300 hover:text-slate-50 transition-all text-lg hover:font-bold hover:text-xl">
+                        <SmoothScrollLink href={link.href} className="text-slate-300 hover:text-slate-50 transition-all text-lg hover:font-bold hover:text-xl">
                             {link.label}
-                        </Link>
+                        </SmoothScrollLink>
                     </li>
                 ))}
             </ul>
