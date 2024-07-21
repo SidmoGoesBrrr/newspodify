@@ -2,30 +2,17 @@
 import React from 'react'
 import FeaturesGallery from './FeaturesGallery'
 import { LayoutGrid } from "./ui/layout-grid";
+import SectionHeader from './ui/section-headers';
 
 const Description = () => {
   return (
     <section id='description'>
       <div className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-none my-8">
-        <h1 className="text-6xl font-bold text-white mt-6 mb-6 text-center">Introducing Newspodify</h1>
-        
-        <ul className="text-gray-300 text-xl md:text-2xl lg:text-3xl mb-6 leading-relaxed tracking-wide list-disc list-inside">
-          <li className="mb-4">
-            Newspodify is your ultimate companion for staying updated with your favorite newsletters.
-          </li>
-          <li className="mb-4">
-            We collect the latest content from various newsletters and transform them into a personalized podcast tailored just for you.
-          </li>
-          <li className="mb-4">
-            We curate and condense the most important insights from the newsletters you trust and enjoy.
-          </li>
-          <li className="mb-4">
-            With Newspodify, you can effortlessly stay informed by listening to the newsletters you want to read.
-          </li>
-          <li className="mb-4">
-            Making it easier than ever to keep up with the content that matters most to you.
-          </li>
-        </ul>
+
+        <SectionHeader text="Introducing Newspodify"/>
+        <p className="text-xl">
+          Newspodify is an innovative app designed to transform your news consumption experience. By aggregating content from your various newsletter subscriptions, Newspodify converts the written word into an engaging podcast format. Now, you can stay informed with the latest news and updates simply by listening—whether you <a href="tel:+"></a>re on the go, at the gym, or relaxing at home. With Newspodify, you receive your news in audio form, making it easier than ever to stay up-to-date without having to read a single word. Experience news like never before—anytime, anywhere.
+        </p>
         <div className="h-screen py-20 w-full">
           <LayoutGrid cards={cards} />
         </div>

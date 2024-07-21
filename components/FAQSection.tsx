@@ -1,11 +1,13 @@
 "use client";
 import React from "react";
 import { FAQAccordion } from "@/components/ui/accordion";
+import SectionHeader from "./ui/section-headers";
 
 const FAQSection = () => {
   return (
-    <div className="container mx-auto py-12 px-4 md:px-0" id="faqs">
-      <h1 className="text-5xl font-bold text-center mb-12 text-white">Frequently Asked Questions</h1>
+    <div className="container mx-auto py-12 px-4 md:px-0" id="faq">
+      <SectionHeader text="Frequently Asked Questions"/>
+
       <div>
         <FAQAccordion />
       </div>

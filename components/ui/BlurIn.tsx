@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-
 import { cn } from "@/utils/cn";
 
 interface BlurIntProps {
@@ -13,6 +12,7 @@ interface BlurIntProps {
   };
   duration?: number;
 }
+
 const BlurIn = ({ word, className, variant, duration = 1 }: BlurIntProps) => {
   const defaultVariants = {
     hidden: { filter: "blur(10px)", opacity: 0 },
@@ -21,18 +21,18 @@ const BlurIn = ({ word, className, variant, duration = 1 }: BlurIntProps) => {
   const combinedVariants = variant || defaultVariants;
 
   return (
-    <motion.h1
+    <motion.span
       initial="hidden"
       animate="visible"
       transition={{ duration }}
       variants={combinedVariants}
       className={cn(
         className,
-        "font-display text-center text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]",
+        "inline-block font-display text-4xl font-bold tracking-[-0.02em] drop-shadow-sm md:text-7xl md:leading-[5rem]"
       )}
     >
       {word}
-    </motion.h1>
+    </motion.span>
   );
 };
 

@@ -5,14 +5,20 @@ import BlurIn from "./ui/BlurIn";
 import Link from 'next/link';
 import { FaHourglassEnd, FaInfoCircle } from 'react-icons/fa';
 import Image from "next/image";
+import { FlipWords } from "./ui/flip-words";
+
 const Hero: React.FC = () => {
     return (
         <section id="hero" className="pb-20 lg:pt-36 md:pt-24 pt-20 overflow-auto text-darkblue flex flex-col lg:flex-row items-center justify-center lg:space-x-10 px-4 lg:px-20">
             <div className="lg:w-1/2 flex flex-col items-center lg:items-start mb-5 lg:mb-0">
-                <BlurIn
-                    word="Your News, Your Way"
-                    className="text-7xl font-bold text-[#40a3bb] mb-4" // Increased font size and added margin bottom
-                />
+                <div className="text-7xl font-bold text-[#40a3bb] mb-4">
+                    <BlurIn
+                        word="Your"/> <FlipWords
+                        words={["News", "Way"]}
+                        duration={1500}
+                        />
+                    
+                </div>
 
                 <HeroHighlight>
                     <motion.h2
@@ -31,7 +37,7 @@ const Hero: React.FC = () => {
                         className="px-4 md:text-3xl lg:text-4xl text-xl font-medium text-[#9cd9de] max-w-4xl leading-relaxed lg:leading-snug text-center lg:text-left mx-auto lg:mx-0 mt-1" // Increased font size and adjusted margin
                     >
 
-                        With Newspodify,stay updated effortlessly by turning your favorite newsletters into a unique podcast{" "}
+                        With Newspodify, stay updated effortlessly by turning your favorite newsletters into a unique podcast{" "}
                         <Highlight className="text-[#89b6c5f4]">
                             tailored to your interests
                         </Highlight>
