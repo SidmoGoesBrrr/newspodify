@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { HoverEffect } from "./ui/card-hover-effect";
+import HoverEffect from "./ui/card-hover-effect";
 import SectionHeader from "./ui/section-headers";
 
 export default function FeaturesGallery() {

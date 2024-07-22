@@ -1,9 +1,9 @@
 "use client"
 import React from 'react'
-import FeaturesGallery from './FeaturesGallery'
-import { LayoutGrid } from "./ui/layout-grid";
-import SectionHeader from './ui/section-headers';
 import Link from 'next/link';
+import LayoutGrid from "./ui/layout-grid";
+import SectionHeader from './ui/section-headers';
+import FeaturesGallery from './FeaturesGallery'
 
 const Description = () => {
   return (
@@ -18,13 +18,13 @@ const Description = () => {
           <LayoutGrid cards={cards} />
         </div>
         <div className="flex flex-col items-center mt-2">
-          <p className="text-center font-bold mb-2">
+          <p className="text-center text-lg font-bold mb-2">
             We include popular newsletters like The Hustle, The 3-2-1 Newsletter and more.
           </p>
-          <p className="text-center text-sm mb-4">
+          <p className="text-center text-base mb-4">
             We&apos;re always open to suggestions! If you have a favorite newsletter you want to hear on Newspodify, let us know.
           </p>
-          <Link href="/suggestions">
+          <Link href="/suggestions" rel="noopener noreferrer" target="_blank">
             <button className="bg-blue-500 hover:bg-blue-700 hover:scale-95 text-white font-bold py-2 px-4 rounded">
               Suggest a Newsletter
             </button>

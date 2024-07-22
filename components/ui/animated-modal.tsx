@@ -1,15 +1,8 @@
 "use client";
-import { cn } from "@/utils/cn";
-import { AnimatePresence, motion } from "framer-motion";
-import React, {
-  ReactNode,
-  createContext,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
 
+import React, { ReactNode, createContext, useContext, useEffect, useRef, useState} from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import cn from "@/utils/cn";
 interface ModalContextType {
   open: boolean;
   setOpen: (open: boolean) => void;

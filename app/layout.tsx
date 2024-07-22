@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
 import Footer from "@/components/Footer";
-import './globals.css';
-import { PHProvider } from './providers';
+import type { Metadata } from "next";
 import dynamic from 'next/dynamic';
-import Header from "@/components/Header";
 import { ReactNode } from 'react';
 import ClientLayout from './ClientLayout';
+import './globals.css';
+import { PHProvider } from './providers';
 
 const PostHogPageView = dynamic(() => import('./PostHogPageView') as Promise<typeof import('./PostHogPageView')>, {
   ssr: false,

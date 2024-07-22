@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { FAQAccordion } from "@/components/ui/accordion";
+import FAQAccordion from "./ui/accordion";
 import SectionHeader from "./ui/section-headers";
 
 const FAQSection = () => {

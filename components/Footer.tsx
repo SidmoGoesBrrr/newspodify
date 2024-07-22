@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { LinkPreview } from "@/components/ui/link-preview";
+import LinkPreview from "./ui/link-preview";
 
 export default function Footer() {
   return (
@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center space-x-4">
           <div className="relative w-8 h-8">
-            <Image src="/nsp_diff_logo.png" alt="Product Logo" width={100} height={100} className="bg-white rounded-full"/>
+            <Image src="/nsp_logo.png" alt="Product Logo" width={100} height={100} className="bg-white rounded-full"/>
           </div>
           <span className="text-sm">&copy; 2024 NewsPodify. All rights reserved.</span>
         </div>

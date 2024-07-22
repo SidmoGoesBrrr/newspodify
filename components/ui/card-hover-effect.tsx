@@ -1,8 +1,8 @@
-import { cn } from "@/utils/cn";
-import { FEATURES } from "@/data/constants";
 import Image from "next/image";
+import cn from "@/utils/cn";
+import { FEATURES } from "@/data/constants";
 
-export function HoverEffect() {
+function HoverEffect() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 relative z-10 py-10 max-w-7xl mx-auto">
       {FEATURES.map((feature, index) => (
@@ -53,3 +53,5 @@ const Feature = ({
     </div>
   );
 };
+
+export default HoverEffect;

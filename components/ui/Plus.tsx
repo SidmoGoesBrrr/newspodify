@@ -1,6 +1,6 @@
 import React from "react";
 
-export const PlusIcon = (props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
+const PlusIcon = (props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -20,3 +20,5 @@ export const PlusIcon = (props: React.JSX.IntrinsicAttributes & React.SVGProps<S
     />
   </svg>
 );
+
+export default PlusIcon;

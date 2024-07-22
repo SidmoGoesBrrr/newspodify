@@ -1,6 +1,6 @@
 import React from "react";
 
-export const MinusIcon = (props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
+const MinusIcon = (props: React.JSX.IntrinsicAttributes & React.SVGProps<SVGSVGElement>) => (
   <svg
     aria-hidden="true"
     focusable="false"
@@ -20,3 +20,5 @@ export const MinusIcon = (props: React.JSX.IntrinsicAttributes & React.SVGProps<
     />
   </svg>
 );
+
+export default MinusIcon;

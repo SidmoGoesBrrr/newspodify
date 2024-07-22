@@ -1,11 +1,12 @@
 "use client";
+
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { NAV_LINKS } from "@/data/constants";
 import { FaHourglassEnd, FaTimes } from "react-icons/fa";
-import SmoothScrollLink from "./ui/SmoothScrolLink";
 import { motion, AnimatePresence } from "framer-motion";
+import { NAV_LINKS } from "@/data/constants";
+import SmoothScrollLink from "./ui/smooth-scroll-link";
 
 const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false);
@@ -18,7 +19,7 @@ const Header = () => {
     return (
         <nav className="relative flex justify-between items-center max-w-7xl mx-auto px-6 py-5">
             <Link href="/" className="flex flex-row">
-                <Image src="/nsp_diff_logo.png" alt="logo" width={50} height={50} className="bg-white rounded-full"/>
+                <Image src="/nsp_logo.png" alt="logo" width={50} height={50} className="bg-white rounded-full"/>
                 
             </Link>
             <ul className="hidden lg:flex gap-8">

@@ -1,9 +1,8 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { cn } from "@/utils/cn";
-import Image from "next/image";
-import { FaTimes } from "react-icons/fa";
+
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import cn from "@/utils/cn";
 
 type Card = {
   id: number;
@@ -12,7 +11,7 @@ type Card = {
   thumbnail: string;
 };
 
-export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
+const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   const [selected, setSelected] = useState<Card | null>(null);
   const [lastSelected, setLastSelected] = useState<Card | null>(null);
 
@@ -116,3 +115,5 @@ const SelectedCard = ({ selected, handleClose }: { selected: Card | null, handle
     </div>
   );
 };
+
+export default LayoutGrid;

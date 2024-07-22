@@ -1,11 +1,12 @@
 "use client";
+
 import { motion } from "framer-motion";
-import { HeroHighlight, Highlight } from "./ui/hero-highlight";
-import BlurIn from "./ui/blurIn";
-import Link from 'next/link';
 import { FaHourglassEnd, FaInfoCircle } from 'react-icons/fa';
 import Image from "next/image";
+import Link from 'next/link';
 import { FlipWords } from "./ui/flip-words";
+import { HeroHighlight, Highlight } from "./ui/hero-highlight";
+import BlurIn from "./ui/blur-in";
 
 const Hero: React.FC = () => {
     return (

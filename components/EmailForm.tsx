@@ -1,16 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
-import React from "react";
-import {
-    Modal,
-    ModalBody,
-    ModalContent,
-    ModalFooter,
-    ModalTrigger,
-} from "./ui/animated-modal";
+
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FaCheckCircle, FaBell, FaLightbulb } from "react-icons/fa";
+import { Modal, ModalBody, ModalContent, ModalTrigger } from "./ui/animated-modal";
 import { Button } from "./ui/moving-border";
 
 interface EmailFormProps {
@@ -43,7 +37,7 @@ const EmailForm: React.FC<EmailFormProps> = ({ onSubmit, error, responseMessage 
     ];
 
     return (
-        <div className="flex flex-col items-center" id="waitlist">
+        <div className="flex flex-col items-center">
             <div className="py-12 flex items-center justify-center">
                 <Modal>
                     <ModalTrigger className="bg-emerald-800 text-white flex justify-center group/modal-btn px-4 py-2 rounded font-bold hover:bg-emerald-600 hover:scale-110 transition duration-300 ease-in-out">
