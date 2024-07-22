@@ -1,8 +1,8 @@
 "use-client";
 
 import React from "react";
-import PlusIcon from "./plus";
-import MinusIcon from "./minus";
+import PlusIcon from "./Plus";
+import MinusIcon from "./Minus";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import { FAQS } from "@/data/constants";
 
