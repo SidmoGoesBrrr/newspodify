@@ -25,7 +25,7 @@ export const price_placeholders = [
     "₹400 a year"
 ]
 
-export const features = [
+export const FEATURES = [
   {
     title: "Personalized Newsletters",
     description:
@@ -61,7 +61,7 @@ export const features = [
     { href: '#faq', key: 'faq', label: 'FAQ' },
   ];
 
-  export const faqs = [
+  export const FAQS = [
     {
       question: "What is Newspodify?",
       answer:

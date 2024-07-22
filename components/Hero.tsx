@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "framer-motion";
 import { HeroHighlight, Highlight } from "./ui/hero-highlight";
-import BlurIn from "./ui/BlurIn";
+import BlurIn from "./ui/blurIn";
 import Link from 'next/link';
 import { FaHourglassEnd, FaInfoCircle } from 'react-icons/fa';
 import Image from "next/image";

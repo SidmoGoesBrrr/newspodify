@@ -18,10 +18,8 @@ const Header = () => {
     return (
         <nav className="relative flex justify-between items-center max-w-7xl mx-auto px-6 py-5">
             <Link href="/" className="flex flex-row">
-                <Image src="/nsp-removebg-preview.png" alt="logo" width={60} height={50} />
-                <p className="mt-8 text-xl sm:text-2xl lg:text-3xl align-text-bottom">
-                    ewspodify
-                </p>
+                <Image src="/nsp_diff_logo.png" alt="logo" width={50} height={50} className="bg-white rounded-full"/>
+                
             </Link>
             <ul className="hidden lg:flex gap-8">
                 {NAV_LINKS.map((link) => (

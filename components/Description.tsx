@@ -111,7 +111,7 @@ const cards = [
     content: <SkeletonTwo />,
     className: "col-span-1",
     thumbnail:
-      "/whywebuy_2.png",
+      "/whywebuy.png",
   },
   {
     id: 3,

@@ -1,15 +1,15 @@
 "use-client";
 import React from "react";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
-import { PlusIcon } from "@/components/ui/Plus";
-import { MinusIcon } from "@/components/ui/Minus";
-import { faqs } from "@/data/constants";
+import { PlusIcon } from "@/components/ui/plus";
+import { MinusIcon } from "@/components/ui/minus";
+import { FAQS } from "@/data/constants";
 
 export function FAQAccordion() {
   return (
     <div className="w-full md:w-4/5 lg:w-5/6 mx-auto">
       <Accordion variant="bordered">
-        {faqs.map((faq, index) => (
+        {FAQS.map((faq, index) => (
           <AccordionItem
             key={index}
             aria-label={"Accordion " + (index + 1)}
