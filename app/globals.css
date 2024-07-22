@@ -56,7 +56,7 @@ button:hover {
 
 /* Accordion Item Background and Text Colors */
 .my-question-color {
-  color: #d3d0d0d1; /* Light gray for good contrast on dark backgrounds */
+  color: #9cd9de; /* Light gray for good contrast on dark backgrounds */
 }
 
 .my-accordion-item-background, .my-accordion-item-background * {
