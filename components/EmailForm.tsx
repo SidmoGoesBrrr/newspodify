@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import {
     Modal,
@@ -21,8 +21,16 @@ interface EmailFormProps {
 
 const EmailForm: React.FC<EmailFormProps> = ({ onSubmit, error, responseMessage }) => {
     const [email, setEmail] = useState<string>("");
+    const [loading, setLoading] = useState<boolean>(false);
+
+    useEffect(() => {
+        if (error || responseMessage) {
+            setLoading(false);
+        }
+    }, [error, responseMessage]);
 
     const handleSubmit = () => {
+        setLoading(true);
         onSubmit(email);
     };
 
@@ -35,7 +43,7 @@ const EmailForm: React.FC<EmailFormProps> = ({ onSubmit, error, responseMessage 
     ];
 
     return (
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center" id="waitlist">
             <div className="py-12 flex items-center justify-center">
                 <Modal>
                     <ModalTrigger className="bg-emerald-800 text-white flex justify-center group/modal-btn px-4 py-2 rounded font-bold hover:bg-emerald-600 hover:scale-110 transition duration-300 ease-in-out">
@@ -62,7 +70,6 @@ const EmailForm: React.FC<EmailFormProps> = ({ onSubmit, error, responseMessage 
                                             rotate: 0,
                                             zIndex: 100,
                                         }}
-                                        
                                         className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden"
                                     >
                                         <Image
@@ -91,9 +98,12 @@ const EmailForm: React.FC<EmailFormProps> = ({ onSubmit, error, responseMessage 
                                 >
                                     Subscribe
                                 </Button>
-
-                                
                             </div>
+                            {loading && (
+                                <div className="flex items-center justify-center absolute inset-0 bg-black bg-opacity-50">
+                                    <div className="rounded-md h-12 w-12 border-4 border-t-4 border-blue-500 animate-spin"></div>
+                                </div>
+                            )}
                             <div className="py-10 flex flex-wrap gap-x-4 gap-y-6 items-start justify-start max-w-sm mx-auto">
                                 <div className="flex items-center justify-center">
                                     <FaBell className="mr-1 text-neutral-700 dark:text-neutral-300 h-4 w-4" />
@@ -127,7 +137,6 @@ const EmailForm: React.FC<EmailFormProps> = ({ onSubmit, error, responseMessage 
                                 </div>
                             </div>
                         </ModalContent>
-                        
                     </ModalBody>
                 </Modal>
             </div>

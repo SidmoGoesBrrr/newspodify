@@ -25,7 +25,7 @@ const Description = () => {
             We&apos;re always open to suggestions! If you have a favorite newsletter you want to hear on Newspodify, let us know.
           </p>
           <Link href="/suggestions">
-            <button className="bg-blue-600 text-white font-bold py-2 px-4 rounded">
+            <button className="bg-blue-500 hover:bg-blue-700 hover:scale-95 text-white font-bold py-2 px-4 rounded">
               Suggest a Newsletter
             </button>
           </Link>

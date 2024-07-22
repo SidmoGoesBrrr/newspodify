@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { cn } from "@/utils/cn";
 import Image from "next/image";
+import { FaTimes } from "react-icons/fa";
 
 type Card = {
   id: number;
@@ -26,9 +27,9 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
   };
 
   return (
-    <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3  max-w-7xl mx-auto gap-4 relative">
+    <div className="w-full h-full p-10 grid grid-cols-1 md:grid-cols-3 max-w-7xl mx-auto gap-4 relative">
       {cards.map((card, i) => (
-        <div key={i} className={cn(card.className, "")}>
+        <div key={i} className={cn(card.className, "cursor-pointer")}>
           <motion.div
             onClick={() => handleClick(card)}
             className={cn(
@@ -42,7 +43,7 @@ export const LayoutGrid = ({ cards }: { cards: Card[] }) => {
             )}
             layoutId={`card-${card.id}`}
           >
-            {selected?.id === card.id && <SelectedCard selected={selected} />}
+            {selected?.id === card.id && <SelectedCard selected={selected} handleClose={handleOutsideClick} />}
             <ImageComponent card={card} />
           </motion.div>
         </div>
@@ -74,7 +75,7 @@ const ImageComponent = ({ card }: { card: Card }) => {
   );
 };
 
-const SelectedCard = ({ selected }: { selected: Card | null }) => {
+const SelectedCard = ({ selected, handleClose }: { selected: Card | null, handleClose: () => void }) => {
   return (
     <div className="bg-transparent h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[60]">
       <motion.div
@@ -106,7 +107,11 @@ const SelectedCard = ({ selected }: { selected: Card | null }) => {
         }}
         className="relative px-8 pb-4 z-[70]"
       >
-        {selected?.content}
+        <div className="flex justify-between items-center">
+          {selected?.content}
+          
+          
+        </div>
       </motion.div>
     </div>
   );

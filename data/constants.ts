@@ -57,7 +57,7 @@ export const features = [
     { href: '#hero', key: 'hero', label: 'Home' },
     { href: '#description', key: 'what_is_nsp', label: 'What is Newspodify' },
     { href: '#features', key: 'features', label: 'Features' },
-    { href: '#waitlist ', key: 'waitlist ', label: 'Waitlist' },
+    { href: '#waitlist', key: 'waitlist ', label: 'Waitlist' },
     { href: '#faq', key: 'faq', label: 'FAQ' },
   ];
 
