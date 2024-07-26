@@ -28,7 +28,7 @@ const FeedbackForm: React.FC = () => {
     try {
       await sendFeedback(formDataObj);
       setSuccess('Feedback submitted successfully!');
-      setFormData({ name: '', features: '', newsletters: '', price: '' ,other: ''});
+      setFormData({ name: '', features: '', newsletters: '', price: '', other: '' });
       setError(null);
     } catch (err) {
       setError((err as Error).message);
@@ -41,7 +41,7 @@ const FeedbackForm: React.FC = () => {
     setInterval(() => {
       element.placeholder = placeholders[index];
       index = (index + 1) % placeholders.length;
-    }, 1500); // Change placeholder every 3 seconds
+    }, 1500); // Change placeholder every 1.5 seconds
   };
 
   useEffect(() => {
@@ -68,7 +68,7 @@ const FeedbackForm: React.FC = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-700"
             required
           />
         </div>
@@ -78,7 +78,7 @@ const FeedbackForm: React.FC = () => {
             name="features"
             value={formData.features}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-700"
             required
           />
         </div>
@@ -88,7 +88,7 @@ const FeedbackForm: React.FC = () => {
             name="newsletters"
             value={formData.newsletters}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-700"
             required
           />
         </div>
@@ -99,10 +99,9 @@ const FeedbackForm: React.FC = () => {
             name="price"
             value={formData.price}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-700"
             required
           />
-          
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-700">Is there anything else you would like to tell us?</label>
@@ -110,9 +109,8 @@ const FeedbackForm: React.FC = () => {
             name="other"
             value={formData.other}
             onChange={handleChange}
-            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
+            className="mt-1 block w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 text-gray-700"
           />
-
         </div>
         <div>
           <button
