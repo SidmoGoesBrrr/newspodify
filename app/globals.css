@@ -87,6 +87,60 @@ button:hover {
   .text-balance {
     text-wrap: balance;
   }
+
+  .user-button-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: scale(1.5);
+  }
+
+
+  .podcast-card {
+    @apply flex flex-col bg-gray-800 rounded-lg p-4 shadow-md;
+  }
+
+  .podcast-title {
+    @apply text-lg font-semibold text-gray-100 mb-2;
+  }
+  .audio-controls {
+    @apply flex items-center justify-between mt-2;
+  }
+
+  .progress-bar {
+    @apply bg-gray-700 rounded-full h-1 w-full mt-2;
+  }
+
+  .progress {
+    @apply bg-teal-500 h-full rounded-full;
+  }
+
+  .update-button {
+    padding: 10px 20px;
+    background-color: #0070f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .update-button.loading {
+    background-color: #aaaaaa;
+    cursor: not-allowed;
+  }  
+
+  .icon-button {
+    @apply p-2 rounded-full hover:bg-gray-700 cursor-pointer;
+  }
+
+  .icon {
+    @apply w-6 h-6;
+  }
+
+  .thumbnail {
+    @apply w-full h-40 object-cover rounded-lg mb-3;
+  }
   
   .container {
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;

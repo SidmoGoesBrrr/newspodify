@@ -2,7 +2,6 @@
 
 import Hero from "@/components/Hero";
 import Description from "@/components/Description";
-import Waitlist from "@/components/Waitlist";
 import FAQSection from "@/components/FAQSection";
 
 export default function Home() {
@@ -11,7 +10,6 @@ export default function Home() {
             <div className="pb-10">
                 <Hero />
                 <Description />
-                <Waitlist />
                 <FAQSection />
             </div>
         </main>

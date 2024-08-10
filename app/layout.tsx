@@ -1,17 +1,18 @@
-import Footer from "@/components/Footer";
-import type { Metadata } from "next";
-import dynamic from 'next/dynamic';
-import { ReactNode } from 'react';
-import ClientLayout from './ClientLayout';
+// app/layout.tsx
+import { ClerkProvider } from '@clerk/nextjs';
 import './globals.css';
+import Footer from "@/components/Footer";
+import dynamic from 'next/dynamic';
+import { ReactNode } from 'react'
 import { PHProvider } from './providers';
+import ClientLayout from './ClientLayout';
 
 const PostHogPageView = dynamic(() => import('./PostHogPageView') as Promise<typeof import('./PostHogPageView')>, {
   ssr: false,
   loading: () => null,
 });
 
-export const metadata: Metadata = {
+export const metadata = {
   title: "Newspodify",
   description: "Newsletters Transformed into Engaging Podcasts",
   openGraph: {
@@ -26,7 +27,6 @@ export const metadata: Metadata = {
       },
     ],
   },
- 
 };
 
 export default function RootLayout({
@@ -38,15 +38,27 @@ export default function RootLayout({
     <html lang="en">
       <PHProvider>
         <body>
-          <ClientLayout>
-            <PostHogPageView />
-            <main className="relative overflow-hidden">
-              {children}
-            </main>
-            <Footer />
-          </ClientLayout>
+          <ClerkProvider>
+            <ClientLayout>
+              <div className="relative flex flex-col min-h-screen">
+                <PostHogPageView />
+                <main className="flex-1 bg-black-3">
+                  <section className="flex min-h-screen flex-1 flex-col px-4 sm:px-14">
+                    <div className="mx-auto flex w-full max-w-5xl flex-col max-sm:px-4">
+                      <div className="flex flex-col md:pb-14">
+                        {children}
+                        {/*TOASTER*/}
+                      </div>
+                    </div>
+                  </section>
+                  {/*RIGHTSIDEBAR*/} 
+                </main>
+                <Footer />
+              </div>
+            </ClientLayout>
+          </ClerkProvider>
         </body>
       </PHProvider>
     </html>
-  )
+  );
 }

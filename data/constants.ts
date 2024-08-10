@@ -29,7 +29,6 @@ export const NAV_LINKS = [
   { href: '#hero', key: 'hero', label: 'Home' },
   { href: '#description', key: 'what_is_nsp', label: 'What is Newspodify' },
   { href: '#features', key: 'features', label: 'Features' },
-  { href: '#waitlist', key: 'waitlist ', label: 'Waitlist' },
   { href: '#faq', key: 'faq', label: 'FAQ' },
 ];
 
@@ -80,6 +79,15 @@ export const FAQS = [
   {
     question: "Can I customize the content in my Newspodify podcast?",
     answer:
-      "Currently, Newspodify allows users to select their preferred categories. We are working on adding more detailed customization options in the future.",
+      "Currently, Newspodify allows users to select their preferred newsletters. We are working on adding more detailed customization options in the future.",
   },
+];
+
+export const AVAILABLE_NEWSLETTERS: string[] = [
+  'The New York Times',
+  'BBC News Briefing',
+  'The Hustle',
+  'Morning Brew',
+  'Justin Welsh',
+  'Tom Snyder',
 ];
