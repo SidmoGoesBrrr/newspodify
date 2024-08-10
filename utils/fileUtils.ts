@@ -1,8 +1,9 @@
 // utils/fileUtils.ts
+const IP = process.env.NEXT_PUBLIC_IP!
 
 export async function getFilteredFilenamesFromVPS(): Promise<string[]> {
   try {
-    const response = await fetch('http://65.20.81.185:3000/api/get-filenames'); // Ensure this endpoint is accessible from the server
+    const response = await fetch('http://' + IP +'/api/get-filenames'); // Ensure this endpoint is accessible from the server
     if (!response.ok) {
       console.error(`Failed to fetch filenames: ${response.statusText}`);
       return [];

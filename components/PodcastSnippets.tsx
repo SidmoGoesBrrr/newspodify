@@ -4,7 +4,8 @@ import Image from 'next/image';
 import { Progress } from '@/components/ui/progress';
 import { formatDateFromFilename } from '@/utils/dateUtils'; // Import the utility function
 
-const BASE_URL = 'http://65.20.81.185/audio_clips';
+const IP = process.env.NEXT_PUBLIC_IP!
+const BASE_URL = 'http://' + IP + '/audio_clips';
 
 interface PodcastSnippetsProps {
   filenamesMap: Record<string, string[]>;
