@@ -1,21 +1,21 @@
 // utils/fileUtils.ts
-const IP = process.env.NEXT_PUBLIC_IP!;
-
+// utils/fileUtils.ts
 export async function getFilteredFilenamesFromVPS(): Promise<string[]> {
   try {
-    const response = await fetch(`http://65.20.81.185:3000/api/get-filenames`); // Ensure this endpoint is accessible from the server
+    const response = await fetch('/api/proxy-filenames'); // Fetching from the Vercel proxy API route
     if (!response.ok) {
       console.error(`Failed to fetch filenames: ${response.statusText}`);
       return [];
     }
     const data = await response.json();
-    console.log('Fetched filenames from VPS:', data);
+    console.log('Fetched filenames from proxy:', data);
     return data || []; // Ensure data structure matches what you expect
   } catch (error) {
     console.error('Error fetching filenames:', error);
     return [];
   }
 }
+
 
 export async function getFilenamesMap(newsletters: string[]): Promise<Record<string, string[]>> {
   const map: Record<string, string[]> = {};
