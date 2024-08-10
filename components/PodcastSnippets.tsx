@@ -5,7 +5,7 @@ import { Progress } from '@/components/ui/progress';
 import { formatDateFromFilename } from '@/utils/dateUtils'; // Import the utility function
 
 const IP = process.env.NEXT_PUBLIC_IP!
-const BASE_URL = 'http://' + IP + '/audio_clips';
+const BASE_URL = `http://${IP}/audio_clips`;
 
 interface PodcastSnippetsProps {
   filenamesMap: Record<string, string[]>;
