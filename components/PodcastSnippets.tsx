@@ -2,9 +2,9 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Progress } from '@/components/ui/progress';
-import { formatDateFromFilename } from '@/utils/dateUtils'; // Import the utility function
+import { formatDateFromFilename } from '@/utils/dateUtils';
 
-const BASE_URL = 'http://65.20.81.185/audio_clips';
+const BASE_URL = '/api/proxy-audio?filename=';
 
 interface PodcastSnippetsProps {
   filenamesMap: Record<string, string[]>;
@@ -12,12 +12,12 @@ interface PodcastSnippetsProps {
 
 const PodcastSnippets: React.FC<PodcastSnippetsProps> = ({ filenamesMap }) => {
   const [playingFile, setPlayingFile] = useState<string | null>(null);
-  const [isPlaying, setIsPlaying] = useState<string | null>(null); // Track the file currently playing
+  const [isPlaying, setIsPlaying] = useState<string | null>(null);
   const [isMuted, setIsMuted] = useState(false);
   const [duration, setDuration] = useState<number | null>(null);
   const [currentTime, setCurrentTime] = useState(0);
 
-  const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({}); // Store refs for multiple audio elements
+  const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({});
 
   useEffect(() => {
     if (playingFile) {
@@ -52,7 +52,7 @@ const PodcastSnippets: React.FC<PodcastSnippetsProps> = ({ filenamesMap }) => {
   }, [playingFile]);
 
   const handlePlayPause = (filename: string) => {
-    const fullUrl = `${BASE_URL}/${filename}`;
+    const fullUrl = `${BASE_URL}${filename}`;
 
     if (playingFile === fullUrl) {
       const audioElement = audioRefs.current[fullUrl];
@@ -104,7 +104,7 @@ const PodcastSnippets: React.FC<PodcastSnippetsProps> = ({ filenamesMap }) => {
           <h2 className="text-xl font-bold text-white">{newsletter}</h2>
           {filenames.map((filename) => {
             const formattedDate = formatDateFromFilename(filename);
-            const fullUrl = `${BASE_URL}/${filename}`;
+            const fullUrl = `${BASE_URL}${filename}`;
             return (
               <div key={filename} className="mb-6">
                 <div className="podcast-card bg-gray-800 rounded-lg p-4 shadow-md">
