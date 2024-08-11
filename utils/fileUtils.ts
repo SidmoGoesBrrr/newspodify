@@ -1,5 +1,4 @@
 // utils/fileUtils.ts
-// utils/fileUtils.ts
 export async function getFilteredFilenamesFromVPS(): Promise<string[]> {
   try {
     const response = await fetch('/api/proxy-filenames'); // Fetching from the Vercel proxy API route
@@ -18,17 +17,29 @@ export async function getFilteredFilenamesFromVPS(): Promise<string[]> {
 
 
 export async function getFilenamesMap(newsletters: string[]): Promise<Record<string, string[]>> {
+  console.log('Starting getFilenamesMap with newsletters:', newsletters);
+
   const map: Record<string, string[]> = {};
+  
+  // Fetch filenames from VPS
   const filenames = await getFilteredFilenamesFromVPS();
+  
+  // Check if filenames are fetched correctly
+  console.log('Fetched filenames:', filenames);
+
+  if (!filenames || filenames.length === 0) {
+    console.warn("No filenames returned from VPS.");
+    return map;
+  }
 
   const now = new Date();
   const lastWeekStart = new Date(now.setDate(now.getDate() - 7));
   const lastWeekEnd = new Date();
-  
+
   console.log('Filtering between:', lastWeekStart, lastWeekEnd);
 
   newsletters.forEach(newsletter => {
-    map[newsletter] = filenames.filter(filename => {
+    const filteredFilenames = filenames.filter(filename => {
       console.log('Processing Filename:', filename);
       const parts = filename.split('_');
       if (parts.length < 2) return false;
@@ -48,11 +59,10 @@ export async function getFilenamesMap(newsletters: string[]): Promise<Record<str
       if (isNaN(fileDate.getTime())) return false;
 
       return name === newsletter && fileDate >= lastWeekStart && fileDate <= lastWeekEnd;
-    })
-    .sort((a, b) => {
+    }).sort((a, b) => {
       const aDateStr = a.split('_')[0];
       const bDateStr = b.split('_')[0];
-      
+
       // Parse the dates from the filenames
       const aDate = new Date(
         parseInt(aDateStr.substring(0, 4), 10),
@@ -69,11 +79,20 @@ export async function getFilenamesMap(newsletters: string[]): Promise<Record<str
       // Sort by date, most recent first
       return bDate.getTime() - aDate.getTime();
     });
+
+    if (filteredFilenames.length > 0) {
+      map[newsletter] = filteredFilenames;
+      console.log(`Added to map for newsletter "${newsletter}":`, filteredFilenames);
+    } else {
+      console.warn(`No matching files found for newsletter: ${newsletter}`);
+    }
   });
 
   console.log('Generated Filenames Map:', map);
   return map;
 }
+
+
 
 
 

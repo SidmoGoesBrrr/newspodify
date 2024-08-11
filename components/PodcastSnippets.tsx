@@ -4,8 +4,7 @@ import Image from 'next/image';
 import { Progress } from '@/components/ui/progress';
 import { formatDateFromFilename } from '@/utils/dateUtils'; // Import the utility function
 
-const IP = process.env.NEXT_PUBLIC_IP!
-const BASE_URL = `http://${IP}/audio_clips`;
+const BASE_URL = 'http://65.20.81.185/audio_clips';
 
 interface PodcastSnippetsProps {
   filenamesMap: Record<string, string[]>;
@@ -13,77 +12,87 @@ interface PodcastSnippetsProps {
 
 const PodcastSnippets: React.FC<PodcastSnippetsProps> = ({ filenamesMap }) => {
   const [playingFile, setPlayingFile] = useState<string | null>(null);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState<string | null>(null); // Track the file currently playing
   const [isMuted, setIsMuted] = useState(false);
-  const [duration, setDuration] = useState(0);
+  const [duration, setDuration] = useState<number | null>(null);
   const [currentTime, setCurrentTime] = useState(0);
-  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({}); // Store refs for multiple audio elements
 
   useEffect(() => {
-    if (audioRef.current && playingFile) {
-      audioRef.current.src = playingFile;
-      audioRef.current.play().then(() => setIsPlaying(true)).catch(err => {
-        console.error('Error playing audio:', err);
-        setIsPlaying(false);
-      });
+    if (playingFile) {
+      const audioElement = audioRefs.current[playingFile];
+      if (audioElement) {
+        audioElement.play().then(() => setIsPlaying(playingFile)).catch(err => {
+          console.error('Error playing audio:', err);
+          setIsPlaying(null);
+        });
+      }
     }
   }, [playingFile]);
 
   useEffect(() => {
-    if (audioRef.current) {
+    const audioElement = audioRefs.current[playingFile || ''];
+    if (audioElement) {
       const updateCurrentTime = () => {
-        setCurrentTime(audioRef.current?.currentTime || 0);
+        setCurrentTime(audioElement.currentTime);
       };
-      audioRef.current.addEventListener('timeupdate', updateCurrentTime);
+      audioElement.addEventListener('timeupdate', updateCurrentTime);
       return () => {
-        audioRef.current?.removeEventListener('timeupdate', updateCurrentTime);
+        audioElement.removeEventListener('timeupdate', updateCurrentTime);
       };
     }
-  }, []);
+  }, [playingFile]);
 
   useEffect(() => {
-    if (audioRef.current) {
-      setDuration(audioRef.current.duration);
+    const audioElement = audioRefs.current[playingFile || ''];
+    if (audioElement) {
+      setDuration(audioElement.duration);
     }
-  }, [audioRef.current?.duration]);
+  }, [playingFile]);
 
   const handlePlayPause = (filename: string) => {
     const fullUrl = `${BASE_URL}/${filename}`;
 
-    if (audioRef.current) {
-      if (playingFile === fullUrl) {
-        if (isPlaying) {
-          audioRef.current.pause();
-          setIsPlaying(false);
+    if (playingFile === fullUrl) {
+      const audioElement = audioRefs.current[fullUrl];
+      if (audioElement) {
+        if (isPlaying === fullUrl) {
+          audioElement.pause();
+          setIsPlaying(null);
         } else {
-          audioRef.current.play();
-          setIsPlaying(true);
+          audioElement.play();
+          setIsPlaying(fullUrl);
         }
-      } else {
-        audioRef.current.pause();
-        setPlayingFile(fullUrl);
       }
     } else {
+      const audioElement = audioRefs.current[playingFile || ''];
+      if (audioElement) {
+        audioElement.pause();
+      }
       setPlayingFile(fullUrl);
     }
   };
 
   const toggleMute = () => {
-    if (audioRef.current) {
-      audioRef.current.muted = !isMuted;
+    const audioElement = audioRefs.current[playingFile || ''];
+    if (audioElement) {
+      audioElement.muted = !isMuted;
       setIsMuted(!isMuted);
     }
   };
 
   const forward = () => {
-    if (audioRef.current) {
-      audioRef.current.currentTime += 5;
+    const audioElement = audioRefs.current[playingFile || ''];
+    if (audioElement) {
+      audioElement.currentTime += 5;
     }
   };
 
   const rewind = () => {
-    if (audioRef.current) {
-      audioRef.current.currentTime -= 5;
+    const audioElement = audioRefs.current[playingFile || ''];
+    if (audioElement) {
+      audioElement.currentTime -= 5;
     }
   };
 
@@ -95,28 +104,26 @@ const PodcastSnippets: React.FC<PodcastSnippetsProps> = ({ filenamesMap }) => {
           <h2 className="text-xl font-bold text-white">{newsletter}</h2>
           {filenames.map((filename) => {
             const formattedDate = formatDateFromFilename(filename);
+            const fullUrl = `${BASE_URL}/${filename}`;
             return (
               <div key={filename} className="mb-6">
                 <div className="podcast-card bg-gray-800 rounded-lg p-4 shadow-md">
                   <h2 className="podcast-title text-xl font-bold text-white">{formattedDate}</h2>
-                  {/* Render audio element only if playingFile is not null */}
-                  {playingFile && (
-                    <audio
-                      ref={audioRef}
-                      src={playingFile}
-                      onLoadedMetadata={() => setDuration(audioRef.current?.duration || 0)}
-                      onEnded={() => setIsPlaying(false)}
-                      className="hidden"
-                    />
-                  )}
+                  <audio
+                    ref={el => { if (el) audioRefs.current[fullUrl] = el; }}
+                    src={fullUrl}
+                    onLoadedMetadata={() => setDuration(audioRefs.current[fullUrl]?.duration || 0)}
+                    onEnded={() => setIsPlaying(null)}
+                    className="hidden"
+                  />
                   <Progress
-                    value={(currentTime / duration) * 100}
+                    value={(currentTime / (duration || 1)) * 100}
                     className="progress-bar bg-gray-700 rounded-full h-1 w-full mt-2"
-                    max={duration}
+                    max={duration || 1}
                   >
                     <div
                       className="progress bg-teal-500 h-full rounded-full"
-                      style={{ width: `${(currentTime / duration) * 100}%` }}
+                      style={{ width: `${(currentTime / (duration || 1)) * 100}%` }}
                     ></div>
                   </Progress>
                   <div className="audio-controls flex items-center justify-between mt-2">
@@ -128,19 +135,19 @@ const PodcastSnippets: React.FC<PodcastSnippetsProps> = ({ filenamesMap }) => {
                         <Image
                           src="/icons/reverse.svg"
                           alt="Rewind"
-                          width={24} // Adjust width as needed
-                          height={24} // Adjust height as needed
+                          width={24}
+                          height={24}
                         />
                       </button>
                       <button
                         onClick={() => handlePlayPause(filename)}
-                        className={`icon-button p-2 rounded-full hover:bg-gray-700 ${isPlaying ? 'font-bold' : ''}`}
+                        className={`icon-button p-2 rounded-full hover:bg-gray-700 ${isPlaying === fullUrl ? 'font-bold' : ''}`}
                       >
                         <Image
-                          src={isPlaying ? "/icons/Pause.svg" : "/icons/Play.svg"}
-                          alt={isPlaying ? "Pause" : "Play"}
-                          width={24} // Adjust width as needed
-                          height={24} // Adjust height as needed
+                          src={isPlaying === fullUrl ? "/icons/Pause.svg" : "/icons/Play.svg"}
+                          alt={isPlaying === fullUrl ? "Pause" : "Play"}
+                          width={24}
+                          height={24}
                         />
                       </button>
                       <button
@@ -150,8 +157,8 @@ const PodcastSnippets: React.FC<PodcastSnippetsProps> = ({ filenamesMap }) => {
                         <Image
                           src="/icons/forward.svg"
                           alt="Forward"
-                          width={24} // Adjust width as needed
-                          height={24} // Adjust height as needed
+                          width={24}
+                          height={24}
                         />
                       </button>
                     </div>
@@ -162,9 +169,9 @@ const PodcastSnippets: React.FC<PodcastSnippetsProps> = ({ filenamesMap }) => {
                       <Image
                         src={isMuted ? "/icons/unmute.svg" : "/icons/mute.svg"}
                         alt={isMuted ? "Unmute" : "Mute"}
-                        width={24} // Adjust width as needed
-                        height={24} // Adjust height as needed
-                        />
+                        width={24}
+                        height={24}
+                      />
                     </button>
                   </div>
                 </div>
