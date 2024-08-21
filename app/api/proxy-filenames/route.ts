@@ -5,6 +5,7 @@ export async function GET() {
     const response = await fetch('http://65.20.81.185:3000/api/get-filenames', {
       headers: {
         'Content-Type': 'application/json',
+        'Cache-Control': 'no-store',
       },
     });
     if (!response.ok) {
