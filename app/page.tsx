@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import Image from "next/image";
 
 export default function Home() {
@@ -110,4 +111,22 @@ export default function Home() {
       </div>
     </main>
   );
+=======
+"use client";
+
+import Hero from "@/components/Hero";
+import Description from "@/components/Description";
+import FAQSection from "@/components/FAQSection";
+
+export default function Home() {
+    return (
+        <main>
+            <div className="pb-10">
+                <Hero />
+                <Description />
+                <FAQSection />
+            </div>
+        </main>
+    );
+>>>>>>> 68701eb29d54020edcf3928d54200aa5a1f2bf91
 }

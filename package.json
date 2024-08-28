@@ -3,12 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+<<<<<<< HEAD
     "dev": "next dev",
+=======
+    "dev": "next dev --turbo",
+>>>>>>> 68701eb29d54020edcf3928d54200aa5a1f2bf91
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "react": "^18",
     "react-dom": "^18",
     "next": "14.2.7"
@@ -22,5 +27,51 @@
     "tailwindcss": "^3.4.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.7"
+=======
+    "@clerk/nextjs": "^5.3.0",
+    "@coreui/coreui": "^5.1.0",
+    "@coreui/react": "^5.1.0",
+    "@nextui-org/accordion": "^2.0.36",
+    "@radix-ui/react-accordion": "^1.2.0",
+    "@radix-ui/react-hover-card": "^1.1.1",
+    "@supabase/supabase-js": "^2.44.2",
+    "@tabler/icons-react": "^3.11.0",
+    "@tsparticles/engine": "^3.5.0",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.5.0",
+    "autoprefixer": "^10.4.19",
+    "axios": "^1.7.2",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "cobe": "^0.6.3",
+    "dotenv": "^16.4.5",
+    "fluent-ffmpeg": "^2.1.3",
+    "framer-motion": "^11.3.8",
+    "lucide-react": "^0.408.0",
+    "mini-svg-data-uri": "^1.4.4",
+    "next": "14.2.4",
+    "node-fetch": "^3.3.2",
+    "posthog-js": "^1.144.2",
+    "posthog-node": "^4.0.1",
+    "qss": "^3.0.0",
+    "radix-ui": "^1.0.1",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-icons": "^5.2.1",
+    "react-intersection-observer": "^9.13.0",
+    "sharp": "^0.33.4",
+    "tailwind-merge": "^2.4.0"
+  },
+  "devDependencies": {
+    "@types/fluent-ffmpeg": "^2.1.25",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5"
+>>>>>>> 68701eb29d54020edcf3928d54200aa5a1f2bf91
   }
 }
