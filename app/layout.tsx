@@ -43,9 +43,9 @@ export default function RootLayout({
               <div className="relative flex flex-col min-h-screen">
                 <PostHogPageView />
                 <main className="flex-1 bg-black-3">
-                  <section className="flex min-h-screen flex-1 flex-col px-4 sm:px-14">
-                    <div className="mx-auto flex w-full max-w-5xl flex-col max-sm:px-4">
-                      <div className="flex flex-col md:pb-14">
+                  <section>
+                    <div>
+                      <div>
                         {children}
                         {/*TOASTER*/}
                       </div>

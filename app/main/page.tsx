@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import NewsletterSelector from '@/components/NewsletterSelector';
 import AuthHandler from '@/components/AuthHandler';
 import PodcastSnippets from '@/components/PodcastSnippets';
+import WeeklyPodcast from '@/components/WeeklyPodcast';
 import { getFilenamesMap } from '@/utils/fileUtils'; // Import your utility function
 
 export default function MainPage() {
@@ -59,7 +60,7 @@ export default function MainPage() {
   }
   
   return (
-    <div id="main">
+    <div id="main" className="flex min-h-screen flex-1 flex-col px-4 sm:px-14">
       <AuthHandler onUserLoaded={(data) => setNewsletters(data.newsletters || [])} />
       <NewsletterSelector
         selectedNewsletters={newsletters}
@@ -72,6 +73,7 @@ export default function MainPage() {
         {isUpdating ? 'Updating...' : 'Update Newsletters'}
       </button>
       <PodcastSnippets filenamesMap={filenamesMap} />
+      <WeeklyPodcast filenamesMap={filenamesMap} />
     </div>
   );
 }

@@ -123,7 +123,9 @@ button:hover {
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-  }
+    width: fit-content; /* Ensures the button only takes as much space as needed */
+    max-width: 200px; /* Optional: Set a max-width to prevent it from being too large */
+  } 
   
   .update-button.loading {
     background-color: #aaaaaa;
