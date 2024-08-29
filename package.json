@@ -3,12 +3,31 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+<<<<<<< HEAD
+    "dev": "next dev",
+=======
     "dev": "next dev --turbo",
+>>>>>>> 68701eb29d54020edcf3928d54200aa5a1f2bf91
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
+    "react": "^18",
+    "react-dom": "^18",
+    "next": "14.2.7"
+  },
+  "devDependencies": {
+    "typescript": "^5",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "postcss": "^8",
+    "tailwindcss": "^3.4.1",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.7"
+=======
     "@clerk/nextjs": "^5.3.0",
     "@coreui/coreui": "^5.1.0",
     "@coreui/react": "^5.1.0",
@@ -59,5 +78,6 @@
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
+>>>>>>> 68701eb29d54020edcf3928d54200aa5a1f2bf91
   }
 }

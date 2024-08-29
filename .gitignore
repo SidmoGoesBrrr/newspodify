@@ -4,6 +4,10 @@
 /node_modules
 /.pnp
 .pnp.js
+<<<<<<< HEAD
+.yarn/install-state.gz
+=======
+>>>>>>> 68701eb29d54020edcf3928d54200aa5a1f2bf91
 
 # testing
 /coverage
@@ -12,9 +16,12 @@
 /.next/
 /out/
 
+<<<<<<< HEAD
+=======
 __pycache__/
 
 secret.key
+>>>>>>> 68701eb29d54020edcf3928d54200aa5a1f2bf91
 # production
 /build
 
