@@ -97,32 +97,38 @@ export const AVAILABLE_NEWSLETTERS: string[] = [
   'Katelyn Bourgoin',
   'Al Jazeera English',
   'Substack',
-]; 
- export const newsletters=[
-{name:"The New York Times",
-  display_name:"The New York Times",
-  categories:["News","Lifestyle","Sports","Science"]
-  
-},
-{name:"hustle",
-  display_name:"The Hustle",
-  categories:["News","Lifestyle","Sports","Science"]
-  
-},{name:"justin_welsh",
-  display_name:"Justin Welsh",
-  categories:["Tools and Resources","Marketing and Content Strategies","Actionable Tips"]
-  
-},{name:"morning_brew",
-  display_name:"Morning Brew",
-  categories:["News","Lifestyle","Sports","Science"]
-  
-},{name:"tomsynder",
-  display_name:"Tom Snyder",
-  categories:["News","Lifestyle","Sports","Science"]
-  
-},{name:"bbc_news_briefing",
-  display_name:"BBC News Briefing",
-  categories:["News","Lifestyle","Sports","Science"]},
+]; // TODO Get all newsletters from email, add them here and on the bottom
 
-  
-];
+ export const newsletters=[
+    {
+      name:"The New York Times",
+      display_name:"The New York Times",
+      categories:["News", "Lifestyle", "Sports", "Science"]
+    },
+    {
+      name:"The Hustle",
+      display_name:"The Hustle",
+      categories:["News", "Lifestyle", "Sports", "Science"]
+    
+    },
+    {
+      name:"Justin Welsh",
+      display_name:"Justin Welsh",
+      categories:["Tools and Resources", "Marketing and Content Strategies", "Actionable Tips"]
+    
+    },
+    {
+      name:"Morning Brew",
+      display_name:"Morning Brew",
+      categories:["News", "Lifestyle", "Sports", "Science"]
+    },
+    {
+      name:"Tom Snyder",
+      display_name:"Tom Snyder",
+      categories:["News", "Lifestyle", "Sports", "Science"]
+    },
+    {
+      name:"BBC News Briefing",
+      display_name:"BBC News Briefing",
+      categories:["News", "Lifestyle", "Sports", "Science"]},
+  ];
