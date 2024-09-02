@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { cn } from "@/lib/utils";
+import cn from "@/utils/cn";
 
 type Tab = {
   title: string;
@@ -40,7 +40,7 @@ export const Tabs = ({
     <div className="flex flex-col h-full">
       <div
         className={cn(
-          "flex items-center justify-start [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full gap-2",
+          "flex items-center justify-start flex-wrap gap-2 overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
           containerClassName
         )}
       >
@@ -51,12 +51,12 @@ export const Tabs = ({
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
             className={cn(
-              "relative px-4 py-2 rounded-full flex-grow",
+              "relative px-4 py-2 rounded-full min-w-[100px] h-[40px]", // Set consistent height and minimum width
               tabClassName
             )}
             style={{
               transformStyle: "preserve-3d",
-              flex: "1 1 auto", // Allow tabs to grow and shrink based on container
+              flexShrink: 0, // Prevents tabs from shrinking
             }}
           >
             {active.value === tab.value && (
@@ -64,12 +64,12 @@ export const Tabs = ({
                 layoutId="clickedbutton"
                 transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
                 className={cn(
-                  "absolute inset-0 bg-gray-200 bg-slate-400 rounded-full",
+                  "absolute inset-0 bg-slate-400 rounded-full",
                   activeTabClassName
                 )}
               />
             )}
-            <span className="flex-grow relative block text-black dark:text-white">
+            <span className="relative block text-black dark:text-white">
               {tab.title}
             </span>
           </button>
@@ -103,7 +103,7 @@ export const FadeInDiv = ({
   const isActive = (tab: Tab) => tab.value === active.value;
 
   return (
-    <div className="relative w-full h-full flex-grow">
+    <div className="relative w-full h-full">
       {tabs.map((tab, idx) => (
         <motion.div
           key={tab.value}

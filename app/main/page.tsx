@@ -4,15 +4,15 @@ import NewsletterSelector from '@/components/NewsletterSelector';
 import AuthHandler from '@/components/AuthHandler';
 import PodcastSnippets from '@/components/PodcastSnippets';
 import WeeklyPodcast from '@/components/WeeklyPodcast';
-import { getFilenamesMap } from '@/utils/fileUtils'; // Import your utility function
+import { getFilenamesMap } from '@/utils/fileUtils';
 
 export default function MainPage() {
   const [newsletters, setNewsletters] = useState<string[]>([]);
   const [filenamesMap, setFilenamesMap] = useState<Record<string, string[]>>({});
   const [isUpdating, setIsUpdating] = useState(false);
+  const [triggerCombineAudio, setTriggerCombineAudio] = useState(false); // New state for triggering combine
 
   useEffect(() => {
-    // Fetch the initial newsletters using the new API endpoint
     const fetchNewsletters = async () => {
       const res = await fetch('/api/get-newsletters');
       if (!res.ok) {
@@ -28,9 +28,11 @@ export default function MainPage() {
 
   const handleUpdateNewsletters = async () => {
     setIsUpdating(true);
+    setTriggerCombineAudio(false); // Reset the trigger before fetching
     try {
       const map = await getFilenamesMap(newsletters);
       setFilenamesMap(map);
+      setTriggerCombineAudio(true); // Set trigger to true after fetching filenames map
     } catch (error) {
       console.error('Error fetching filenames map:', error);
     } finally {
@@ -49,16 +51,16 @@ export default function MainPage() {
         action,
       }),
     });
-  
+
     if (!res.ok) {
       console.error('Error updating newsletters');
       return;
     }
-  
+
     const data = await res.json();
     setNewsletters(data.newsletters || []);
   }
-  
+
   return (
     <div id="main" className="flex min-h-screen flex-1 flex-col px-4 sm:px-14">
       <AuthHandler onUserLoaded={(data) => setNewsletters(data.newsletters || [])} />
@@ -72,8 +74,8 @@ export default function MainPage() {
       >
         {isUpdating ? 'Updating...' : 'Update Newsletters'}
       </button>
+      <WeeklyPodcast filenamesMap={filenamesMap} triggerCombineAudio={triggerCombineAudio} />
       <PodcastSnippets filenamesMap={filenamesMap} />
-      <WeeklyPodcast filenamesMap={filenamesMap} />
     </div>
   );
 }

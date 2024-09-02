@@ -99,36 +99,61 @@ export const AVAILABLE_NEWSLETTERS: string[] = [
   'Substack',
 ]; // TODO Get all newsletters from email, add them here and on the bottom
 
- export const newsletters=[
-    {
-      name:"The New York Times",
-      display_name:"The New York Times",
-      categories:["News", "Lifestyle", "Sports", "Science"]
-    },
-    {
-      name:"The Hustle",
-      display_name:"The Hustle",
-      categories:["News", "Lifestyle", "Sports", "Science"]
-    
-    },
-    {
-      name:"Justin Welsh",
-      display_name:"Justin Welsh",
-      categories:["Tools and Resources", "Marketing and Content Strategies", "Actionable Tips"]
-    
-    },
-    {
-      name:"Morning Brew",
-      display_name:"Morning Brew",
-      categories:["News", "Lifestyle", "Sports", "Science"]
-    },
-    {
-      name:"Tom Snyder",
-      display_name:"Tom Snyder",
-      categories:["News", "Lifestyle", "Sports", "Science"]
-    },
-    {
-      name:"BBC News Briefing",
-      display_name:"BBC News Briefing",
-      categories:["News", "Lifestyle", "Sports", "Science"]},
-  ];
+export const newsletters=[
+  {
+    name:"The New York Times",
+    display_name:"The New York Times",
+    categories:["News", "Lifestyle", "Sports", "Science"]
+  },
+  {
+    name:"The Hustle",
+    display_name:"The Hustle",
+    categories:["News", "Lifestyle", "Sports", "Science"]
+
+  },
+  {
+    name:"Justin Welsh",
+    display_name:"Justin Welsh",
+    categories:["Tools and Resources", "Marketing and Content Strategies", "Actionable Tips"]
+
+  },
+  {
+    name:"Morning Brew",
+    display_name:"Morning Brew",
+    categories:["News", "Lifestyle", "Sports", "Science"]
+  },
+  {
+    name:"Tom Snyder",
+    display_name:"Tom Snyder",
+    categories:["News", "Lifestyle", "Sports", "Science"]
+  },
+  {
+    name:"BBC News Briefing",
+    display_name:"BBC News Briefing",
+    categories:["News", "Lifestyle", "Sports", "Science"]},
+  {
+    name:"Substack",
+    display_name:"Substack",
+    categories:[]},
+  {
+    name:"Gohar Khan",
+    display_name:"Gohar Khan",
+    categories:["Education","Career"]},
+  {
+    name:"Huberman Lab",
+    display_name:"Huberman Lab",
+    categories:["Neuro Science","Health and Science"]},
+  {
+    name:"Katelyn Bourgoin",
+    display_name:"Katelyn Bourgoin",
+    categories:["Marketing tips"],
+  },
+  {
+    name:"Al Jazeera English",
+    display_name:"Al Jazeera English",
+    categories:["International Events","Sports"]},
+  {
+    name:"James Clear",
+    display_name:"James Clear",
+    categories:["Habits","focus","Decision Making","Self Improvement"]}
+];

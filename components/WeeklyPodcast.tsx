@@ -5,11 +5,12 @@ import { Progress } from '@/components/ui/progress';
 
 interface WeeklyPodcastProps {
   filenamesMap: Record<string, string[]>;
+  triggerCombineAudio: boolean; // New prop to control when to combine
 }
 
-const BASE_URL = '/api/proxy-audio?filename='; // Adjust this to your actual base URL
+const BASE_URL = '/api/proxy-audio?filename=';
 
-const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap }) => {
+const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerCombineAudio }) => {
   const [combinedAudioUrl, setCombinedAudioUrl] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
@@ -19,7 +20,8 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap }) => {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // Combine audio files by calling the combine audio API
+    if (!triggerCombineAudio) return; // Only run if the trigger is active
+
     const filenames = Object.values(filenamesMap).flat();
 
     fetch('/api/combine-audio', {
@@ -38,7 +40,7 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap }) => {
       .catch((error) => {
         console.error('Error fetching combined audio:', error);
       });
-  }, [filenamesMap]);
+  }, [filenamesMap, triggerCombineAudio]);
 
   useEffect(() => {
     const audioElement = audioRef.current;

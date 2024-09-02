@@ -7,6 +7,7 @@ export async function GET() {
         'Content-Type': 'application/json',
         'Cache-Control': 'no-store',
       },
+      cache: 'no-cache',
     });
     if (!response.ok) {
       throw new Error(`Failed to fetch: ${response.statusText}`);

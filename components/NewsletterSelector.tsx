@@ -47,7 +47,7 @@ const NewsletterSelector: FC<NewsletterSelectorProps> = ({
     content: (
       <div className="p-4 bg-gray-200 dark:bg-zinc-800 rounded-lg w-full">
         <h2 className="text-xl font-semibold text-black dark:text-white mb-4">
-          {category} Newsletters
+          {category}
         </h2>
         <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
           {getNewslettersByCategory(category).map((newsletter) => (
