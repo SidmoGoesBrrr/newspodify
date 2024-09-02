@@ -2,7 +2,6 @@
 import { useEffect, useState } from 'react';
 import NewsletterSelector from '@/components/NewsletterSelector';
 import AuthHandler from '@/components/AuthHandler';
-import PodcastSnippets from '@/components/PodcastSnippets';
 import WeeklyPodcast from '@/components/WeeklyPodcast';
 import { getFilenamesMap } from '@/utils/fileUtils';
 
@@ -75,7 +74,6 @@ export default function MainPage() {
         {isUpdating ? 'Updating...' : 'Update Newsletters'}
       </button>
       <WeeklyPodcast filenamesMap={filenamesMap} triggerCombineAudio={triggerCombineAudio} />
-      <PodcastSnippets filenamesMap={filenamesMap} />
     </div>
   );
 }
