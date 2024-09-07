@@ -106,11 +106,28 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerComb
     }
   };
 
+  // Calculate date range for the title
+  const today = new Date();
+  const lastWeek = new Date(today);
+  lastWeek.setDate(today.getDate() - 7);
+
+  const formatDate = (date: Date) => {
+    return date.toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    });
+  };
+
+  const title = `${formatDate(lastWeek)} - ${formatDate(today)}`;
+
+
   return (
     <section className="mt-10 flex flex-col">
       <h1 className="text-white text-3xl font-bold mb-4">Weekly Combined Podcast</h1>
       {combinedAudioUrl ? (
         <div className="podcast-card bg-gray-800 rounded-lg p-4 shadow-md">
+          <h2 className="podcast-title text-xl font-bold text-white">{title}</h2>
           <audio
             ref={audioRef}
             src={combinedAudioUrl}
