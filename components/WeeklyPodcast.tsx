@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Progress } from '@/components/ui/progress';
+import { useUser } from '@clerk/nextjs';
 
 interface WeeklyPodcastProps {
   filenamesMap: Record<string, string[]>;
@@ -18,6 +19,8 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerComb
   const [currentTime, setCurrentTime] = useState(0);
 
   const audioRef = useRef<HTMLAudioElement | null>(null);
+  const { user } = useUser();
+  const userId = user?.id;
 
   useEffect(() => {
     if (!triggerCombineAudio) return; // Only run if the trigger is active
@@ -26,8 +29,8 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerComb
 
     fetch('/api/combine-audio', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ filenames }),
+      headers: { 'Content-Type': 'application/json', 'User-ID': userId ?? '' },
+      body: JSON.stringify({ filenames, user_id: userId ?? '' }),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -40,7 +43,7 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerComb
       .catch((error) => {
         console.error('Error fetching combined audio:', error);
       });
-  }, [filenamesMap, triggerCombineAudio]);
+  }, [filenamesMap, triggerCombineAudio, userId]);
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -58,7 +61,13 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerComb
   useEffect(() => {
     const audioElement = audioRef.current;
     if (audioElement) {
-      setDuration(audioElement.duration);
+      const onLoadedMetadata = () => {
+        setDuration(audioElement.duration);
+      };
+      audioElement.addEventListener('loadedmetadata', onLoadedMetadata);
+      return () => {
+        audioElement.removeEventListener('loadedmetadata', onLoadedMetadata);
+      };
     }
   }, [combinedAudioUrl]);
 
@@ -110,9 +119,9 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerComb
             className="hidden"
           />
           <Progress
-            value={(currentTime / (duration || 1)) * 100}
+            value={duration ? (currentTime / duration) * 100 : 0}
             className="progress-bar bg-gray-700 rounded-full h-1 w-full mt-2"
-            max={duration || 1}
+            max={100}
           >
             <div
               className="progress bg-teal-500 h-full rounded-full"

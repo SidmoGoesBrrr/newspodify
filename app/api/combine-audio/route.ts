@@ -15,24 +15,30 @@ function isBackendResponse(data: any): data is BackendResponse {
 export async function POST(request: Request) {
   try {
     // Parse the incoming JSON request
-    const { filenames } = await request.json();
+    const { filenames, user_id } = await request.json();
 
     // Validate the filenames array
     if (!filenames || !Array.isArray(filenames) || filenames.length === 0) {
       return NextResponse.json({ error: 'No filenames provided' }, { status: 400 });
     }
 
+    // Validate user_id
+    if (!user_id) {
+      return NextResponse.json({ error: 'User ID not provided' }, { status: 400 });
+    }
+
     // Make a request to the FastAPI backend
     const response = await fetch(BACKEND_URL, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      // Ensure the request body matches the required structure
+      headers: { 
+        'Content-Type': 'application/json',
+        'User-ID': user_id  // Send the user ID as a header
+      },
       body: JSON.stringify({ filenames }),
     });
 
     // Check if the response from FastAPI is OK
     if (!response.ok) {
-      // Log the actual error response from the backend to identify the issue
       const errorData = await response.json();
       console.error('Backend Error Response:', errorData);
       return NextResponse.json({ error: errorData.detail || 'Failed to combine audio files' }, { status: response.status });

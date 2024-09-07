@@ -138,7 +138,7 @@ export const newsletters=[
   {
     name:"Gohar Khan",
     display_name:"Gohar Khan",
-    categories:["Education","Career"]},
+    categories:["Education", "Career"]},
   {
     name:"Huberman Lab",
     display_name:"Huberman Lab",
@@ -155,5 +155,5 @@ export const newsletters=[
   {
     name:"James Clear",
     display_name:"James Clear",
-    categories:["Habits","focus","Decision Making","Self Improvement"]}
+    categories:["Habits", "Decision Making" ,"Self Improvement"]}
 ];
