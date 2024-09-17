@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Progress } from '@/components/ui/progress';
 import { useUser } from '@clerk/nextjs';
+import React from 'react';
+import { ScaleLoader } from 'react-spinners';
 
 interface WeeklyPodcastProps {
   filenamesMap: Record<string, string[]>;
@@ -195,7 +197,11 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerComb
           </div>
         </div>
       ) : (
-        <p>Loading combined audio...</p>
+        <div className="flex flex-col">
+          <p className='text-white-40 text-lg font-medium'>Combining audio...</p>
+      <ScaleLoader color="#36d7b7" height={80} width={15} radius={2} margin={2} />
+      <p className="mt-5 text-lg text-white-40 font-medium">This might take a minute...</p>
+    </div>
       )}
     </section>
   );
