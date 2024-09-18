@@ -58,7 +58,7 @@ const Header = () => {
                 ))}
             </ul>
             <div className="lg:flex items-center">
-                <Link href="/main" className="flex items-center bg-slate-400 text-slate-50 py-2 px-4 rounded-full hover:bg-gray-700 hover:scale-125 transition-all">
+                <Link href="/dashboard" className="hidden lg:flex items-center bg-slate-400 text-slate-50 py-2 px-4 rounded-full hover:bg-gray-700 hover:scale-125 transition-all">
                     Try Version 0.0.1
                 </Link>
             </div>

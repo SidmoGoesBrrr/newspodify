@@ -102,11 +102,13 @@ export const AVAILABLE_NEWSLETTERS: string[] = [
 export const newsletters=[
   {
     name:"The New York Times",
+    code:'4N',
     display_name:"The New York Times",
     categories:["News", "Lifestyle", "Sports", "Science"]
   },
   {
     name:"The Hustle",
+    code:'4H',
     display_name:"The Hustle",
     categories:["News", "Lifestyle", "Sports", "Science"]
 
@@ -114,46 +116,56 @@ export const newsletters=[
   {
     name:"Justin Welsh",
     display_name:"Justin Welsh",
+    code:'3J',
     categories:["Tools and Resources", "Marketing and Content Strategies", "Actionable Tips"]
 
   },
   {
     name:"Morning Brew",
+    code:'4M',
     display_name:"Morning Brew",
     categories:["News", "Lifestyle", "Sports", "Science"]
   },
   {
     name:"Tom Snyder",
+    code:'4T',
     display_name:"Tom Snyder",
     categories:["News", "Lifestyle", "Sports", "Science"]
   },
   {
     name:"BBC News Briefing",
+    code:'4B',
     display_name:"BBC News Briefing",
     categories:["News", "Lifestyle", "Sports", "Science"]},
   {
     name:"Substack",
+    code:'0S',
     display_name:"Substack",
     categories:[]},
   {
     name:"Gohar Khan",
+    code:'2G',
     display_name:"Gohar Khan",
     categories:["Education", "Career"]},
   {
     name:"Huberman Lab",
+    code:'2H',
     display_name:"Huberman Lab",
     categories:["Neuro Science","Health and Science"]},
   {
     name:"Katelyn Bourgoin",
+    code:'1K',
     display_name:"Katelyn Bourgoin",
     categories:["Marketing tips"],
   },
   {
     name:"Al Jazeera English",
+    code:'2A',
     display_name:"Al Jazeera English",
     categories:["International Events","Sports"]},
   {
     name:"James Clear",
+    code:'3C',
     display_name:"James Clear",
     categories:["Habits", "Decision Making" ,"Self Improvement"]}
 ];

@@ -12,7 +12,7 @@ const Hero: React.FC = () => {
     return (
         <section id="hero" className="pb-20 lg:pt-36 md:pt-24 pt-20 overflow-auto text-darkblue flex flex-col lg:flex-row items-center justify-center lg:space-x-10 px-4 lg:px-20">
             <div className="lg:w-1/2 flex flex-col items-center lg:items-start mb-5 lg:mb-0">
-                <div className="text-7xl font-bold text-[#40a3bb] mb-4">
+                <div className="text-7xl font-bold text-[#60c6e0] mb-4">
                     <BlurIn
                         word="Your"/> <FlipWords
                         words={["News", "Way"]}
@@ -39,15 +39,15 @@ const Hero: React.FC = () => {
                     >
 
                         With Newspodify, stay updated effortlessly by turning your favorite newsletters into a unique podcast{" "}
-                        <Highlight className="text-[#89b6c5f4]">
+                        <Highlight className="text-[#ffffff]">
                             tailored to your interests
                         </Highlight>
                     </motion.h2>
                 </HeroHighlight>
                 <div className="flex flex-col md:flex-row md:space-x-4 mt-6 md:mt-8 items-center justify-center"> {/* Updated flex styling */}
-                    <Link href="/main" className="flex items-center bg-slate-400 text-slate-50 py-3 px-6 rounded-full hover:bg-gray-700 hover:scale-95 transition-all text-lg md:text-xl mb-4 md:mb-0">
+                    <Link href="#waitlist" className="flex items-center bg-slate-400 text-slate-50 py-3 px-6 rounded-full hover:bg-gray-700 hover:scale-95 transition-all text-lg md:text-xl mb-4 md:mb-0">
                         <FaHourglassEnd className="mr-2" />
-                        Try Version 0.0.1
+                        Join Waitlist Now
                     </Link>
                     <Link href="#description" className="flex items-center bg-blue-500 text-white py-3 px-6 rounded-full hover:bg-blue-700 hover:scale-95 transition-all text-lg md:text-xl">
                         <FaInfoCircle className="mr-2" />

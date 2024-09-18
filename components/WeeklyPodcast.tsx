@@ -2,50 +2,75 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { Progress } from '@/components/ui/progress';
-import { useUser } from '@clerk/nextjs';
 import React from 'react';
 import { ScaleLoader } from 'react-spinners';
+import {newsletters as allNewsletters} from '@/data/constants'
 
 interface WeeklyPodcastProps {
   filenamesMap: Record<string, string[]>;
-  triggerCombineAudio: boolean; // New prop to control when to combine
+  newsletters: string[];
 }
 
 const BASE_URL = '/api/proxy-audio?filename=';
 
-const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerCombineAudio }) => {
+const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, newsletters }) => {
   const [combinedAudioUrl, setCombinedAudioUrl] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [duration, setDuration] = useState<number | null>(null);
   const [currentTime, setCurrentTime] = useState(0);
-
+  const [isCombining, setIsCombining] = useState(false); // New state for combining trigger
   const audioRef = useRef<HTMLAudioElement | null>(null);
-  const { user } = useUser();
-  const userId = user?.id;
 
-  useEffect(() => {
-    if (!triggerCombineAudio) return; // Only run if the trigger is active
+  // Function to get current date in the format YYYYMMDD
+  const getCurrentDate = () => {
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}${month}${day}`;
+  };
 
+  // Create the clipId based on date and newsletter codes
+  const getClipId = (selectedNewsletterNames: string[]): string => {
+    const date = getCurrentDate();
+    
+    // Filter the newsletter codes based on the names in selectedNewsletterNames
+    const newsletterCodes = allNewsletters
+        .filter(newsletter => selectedNewsletterNames.includes(newsletter.name))
+        .map(newsletter => newsletter.code)
+        .join('');
+    
+    return `${date}${newsletterCodes}`;
+  };
+
+  const handleCombineAudio = async () => {
+    setIsCombining(true); // Show combining status
     const filenames = Object.values(filenamesMap).flat();
+    const clipId = getClipId(newsletters); // Generate clipId
 
-    fetch('/api/combine-audio', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'User-ID': userId ?? '' },
-      body: JSON.stringify({ filenames, user_id: userId ?? '' }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.url) {
-          setCombinedAudioUrl(`${BASE_URL}${data.url}`);
-        } else {
-          console.error('Failed to combine audio:', data.error);
-        }
-      })
-      .catch((error) => {
-        console.error('Error fetching combined audio:', error);
+    try {
+      const response = await fetch('/api/combine-audio', {
+        method: 'POST',
+        headers: { 
+          'Content-Type': 'application/json',
+          'User-ID': clipId, // Pass clipId in the headers
+        },
+        body: JSON.stringify({ filenames, user_id: clipId }),
       });
-  }, [filenamesMap, triggerCombineAudio, userId]);
+
+      const data = await response.json();
+      if (data.url) {
+        setCombinedAudioUrl(`${BASE_URL}${data.url}`);
+      } else {
+        console.error('Failed to combine audio:', data.error);
+      }
+    } catch (error) {
+      console.error('Error fetching combined audio:', error);
+    } finally {
+      setIsCombining(false);
+    }
+  };
 
   useEffect(() => {
     const audioElement = audioRef.current;
@@ -108,7 +133,6 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerComb
     }
   };
 
-  // Calculate date range for the title
   const today = new Date();
   const lastWeek = new Date(today);
   lastWeek.setDate(today.getDate() - 7);
@@ -123,10 +147,15 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerComb
 
   const title = `${formatDate(lastWeek)} - ${formatDate(today)}`;
 
-
   return (
     <section className="mt-10 flex flex-col">
       <h1 className="text-white text-3xl font-bold mb-4">Weekly Combined Podcast</h1>
+      <button
+        onClick={handleCombineAudio}
+        className={`update-button mb-4 ${isCombining ? 'loading' : ''}`}
+      >
+        {isCombining ? 'Combining...' : 'Combine Audio'}
+      </button>
       {combinedAudioUrl ? (
         <div className="podcast-card bg-gray-800 rounded-lg p-4 shadow-md">
           <h2 className="podcast-title text-xl font-bold text-white">{title}</h2>
@@ -141,12 +170,7 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerComb
             value={duration ? (currentTime / duration) * 100 : 0}
             className="progress-bar bg-gray-700 rounded-full h-1 w-full mt-2"
             max={100}
-          >
-            <div
-              className="progress bg-teal-500 h-full rounded-full"
-              style={{ width: `${(currentTime / (duration || 1)) * 100}%` }}
-            ></div>
-          </Progress>
+          />
           <div className="audio-controls flex items-center justify-between mt-2">
             <div className="flex items-center gap-2">
               <button
@@ -196,13 +220,13 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, triggerComb
             </button>
           </div>
         </div>
-      ) : (
+      ) : isCombining ? (
         <div className="flex flex-col">
-          <p className='text-white-40 text-lg font-medium'>Combining audio...</p>
-      <ScaleLoader color="#36d7b7" height={80} width={15} radius={2} margin={2} />
-      <p className="mt-5 text-lg text-white-40 font-medium">This might take a minute...</p>
-    </div>
-      )}
+          <p className="text-white-40 text-lg font-medium">Combining audio...</p>
+          <ScaleLoader color="#36d7b7" height={80} width={15} radius={2} margin={2} />
+          <p className="mt-5 text-lg text-white-40 font-medium">This might take a minute...</p>
+        </div>
+      ) : null}
     </section>
   );
 };

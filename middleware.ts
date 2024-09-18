@@ -10,8 +10,8 @@ const isPublicRoute = createRouteMatcher([
 ]);
 
 export default clerkMiddleware((auth, req) => {
-  if (req.nextUrl.pathname === '/main') {
-    auth().protect(); // Protect only the /main route
+  if (req.nextUrl.pathname === '/dashboard') {
+    auth().protect(); // Protect only the /dashboard route
   } else if (!isPublicRoute(req)) {
     auth().protect(); // Protect all other routes not explicitly public
   }
