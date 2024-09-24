@@ -54,9 +54,9 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, newsletters
         method: 'POST',
         headers: { 
           'Content-Type': 'application/json',
-          'User-ID': clipId, // Pass clipId in the headers
+          'Clip-ID': clipId, // Pass clipId in the headers
         },
-        body: JSON.stringify({ filenames, user_id: clipId }),
+        body: JSON.stringify({ filenames, clip_id: clipId }),
       });
 
       const data = await response.json();

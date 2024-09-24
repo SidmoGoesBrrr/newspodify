@@ -15,16 +15,16 @@ function isBackendResponse(data: any): data is BackendResponse {
 export async function POST(request: Request) {
   try {
     // Parse the incoming JSON request
-    const { filenames, user_id } = await request.json();
+    const { filenames, clip_id } = await request.json();
 
     // Validate the filenames array
     if (!filenames || !Array.isArray(filenames) || filenames.length === 0) {
       return NextResponse.json({ error: 'No filenames provided' }, { status: 400 });
     }
 
-    // Validate user_id
-    if (!user_id) {
-      return NextResponse.json({ error: 'User ID not provided' }, { status: 400 });
+    // Validate clip_id
+    if (!clip_id) {
+      return NextResponse.json({ error: 'Clip ID not provided' }, { status: 400 });
     }
 
     // Make a request to the FastAPI backend
@@ -32,7 +32,7 @@ export async function POST(request: Request) {
       method: 'POST',
       headers: { 
         'Content-Type': 'application/json',
-        'User-ID': user_id  // Send the user ID as a header
+        'Clip-ID': clip_id  // Send the clip ID as a header
       },
       body: JSON.stringify({ filenames }),
     });
