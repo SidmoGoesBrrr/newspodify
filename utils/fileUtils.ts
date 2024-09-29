@@ -88,6 +88,6 @@ export async function getFilenamesMap(newsletters: string[]): Promise<Record<str
     }
   });
 
-  console.log('Generated Filenames Map:', map);
+  console.log('Generated Filenames Map:', JSON.stringify(map, null, 2));
   return map;
 }

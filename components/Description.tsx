@@ -8,9 +8,12 @@ import FeaturesGallery from './FeaturesGallery'
 const Description = () => {
   return (
     <section id='description'>
-      <div className="bg-gray-800 p-6 rounded-lg shadow-lg max-w-none my-8">
+      <div className="p-6 rounded-lg shadow-lg max-w-none my-8">
 
-        <SectionHeader text="Introducing Newspodify" />
+      <span className="flex justify-center space-x-2">
+        <SectionHeader text="Introducing" className="text-lightorange" />
+        <SectionHeader text="Newspodify" className="text-orange" />
+      </span>
         <p className="text-xl text-gray-300 text-center">
           Newspodify is an innovative app designed to revolutionize your content consumption experience. By seamlessly aggregating articles, blogs, newsletters, and more from your favorite sources, Newspodify converts written content into engaging audio format. Now, you can stay informed and entertained simply by listening—whether you&apos;re on the go, at the gym, or relaxing at home. With Newspodify, you receive all your favorite content in audio form, making it easier than ever to stay up-to-date and enjoy diverse information without having to read a single word. Experience content like never before—anytime, anywhere, with Newspodify.
         </p>
@@ -21,11 +24,11 @@ const Description = () => {
           <p className="text-center text-lg text-white font-bold mb-2">
             We include popular newsletters like The Hustle, The 3-2-1 Newsletter and more.
           </p>
-          <p className="text-center  text-gray-300  text-base mb-4">
+          <p className="text-center  text-white  text-base mb-4">
             We&apos;re always open to suggestions! If you have a favorite newsletter you want to hear on Newspodify, let us know.
           </p>
           <Link href="/suggestions" rel="noopener noreferrer" target="_blank">
-            <button className="bg-blue-500 hover:bg-blue-700 hover:scale-95 text-white font-bold py-2 px-4 rounded">
+            <button className="bg-orange hover:bg-gray-700 hover:scale-95 text-white font-bold py-2 px-4 rounded">
               Suggest a Newsletter
             </button>
           </Link>

@@ -3,45 +3,41 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 34, 34, 34;
-  --background-end-rgb: 0, 0, 0;
-  --primary-rgb: 52, 152, 219;
-  --secondary-rgb: 46, 204, 113;
-  --accent-rgb: 155, 89, 182;
+  --foreground-rgb: 0, 0, 0; /* Default text color (black) */
+  --background-start-rgb: 255, 132, 0; /* Orange background start */
+  --background-end-rgb: 45, 47, 120; /* Dark blue background end */
+  --primary-rgb: 255, 132, 0; /* Primary orange */
+  --secondary-rgb: 255, 255, 255; /* White for buttons and highlights */
+  --accent-rgb: 33, 46, 119; /* Dark blue for accents */
 }
-
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 20, 20, 20;
+    --foreground-rgb: 255, 255, 255; /* White for dark mode text */
+    --background-start-rgb: 20, 20, 20; /* Darker background in dark mode */
     --background-end-rgb: 0, 0, 0;
-    --primary-rgb: 41, 128, 185;
-    --secondary-rgb: 39, 174, 96;
-    --accent-rgb: 142, 68, 173;
+    --primary-rgb: 255, 132, 0; /* Orange stays consistent */
+    --secondary-rgb: 255, 255, 255; /* White */
+    --accent-rgb: 33, 46, 119; /* Dark blue */
   }
 }
 
 body {
-  background-color: #8e70bc;
-  background-image: linear-gradient(90deg, #a329be 0%, #0a317b 97.15%);
+  background-color: #000; /* Pure black background */
+  background-image: linear-gradient(180deg, rgb(var(--background-start-rgb)) 0%, rgb(var(--background-end-rgb)) 100%);
   background-blend-mode: overlay;
   color: rgb(var(--foreground-rgb));
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif; /* Switch to Roboto for body text */
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Roboto', sans-serif;
-  color: rgb(var(--primary-rgb));
+  font-family: 'Montserrat', sans-serif; /* Headings to use Montserrat */
+  color: rgb(var(--primary-rgb)); /* Use primary orange for headings */
 }
 
-
-
-
 button {
-  background-color: rgb(var(--primary-rgb));
-  color: white;
+  background-color: rgb(var(--primary-rgb)); /* Orange background */
+  color: rgb(var(--secondary-rgb)); /* White text */
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -50,31 +46,28 @@ button {
 }
 
 button:hover {
-  background-color: rgb(var(--secondary-rgb));
+  background-color: rgb(var(--accent-rgb)); /* Dark blue on hover */
 }
-
 
 /* Accordion Item Background and Text Colors */
 .my-question-color {
-  color: #9cd9de; /* Light gray for good contrast on dark backgrounds */
+  color: #FBD6B6; /* Use primary orange for accordion questions */
 }
 
 .my-accordion-item-background, .my-accordion-item-background * {
-  background-color: transparent; /* Dark gray for a modern, sleek look */
+  background-color: transparent; /* Transparent background for sleek look */
 }
 
 .my-accordion-item-background:hover * {
-  background-color: transparent; /* Slightly lighter gray for hover effect */
+  background-color: transparent; /* No hover background change */
 }
 
-/* Accordion Item Content Text Color */
 .my-accordion-item-content {
-  color: #E0E0E0; /* Slightly lighter gray for better readability */
+  color: rgb(var(--foreground-rgb)); /* Regular text color */
 }
 
-/* Optional: Add active state */
 .my-accordion-item-active, .my-accordion-item-active * {
-  background-color: #3A3A3A; /* Darker gray for the active state */
+  background-color: rgb(var(--accent-rgb)); /* Dark blue for active state */
 }
 
 .tabs-container {
@@ -82,7 +75,6 @@ button:hover {
   grid-auto-flow: column;
   grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust minmax value as needed */
 }
-
 
 @layer base {
   html {
@@ -96,12 +88,11 @@ button:hover {
   }
 
   .user-button-wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transform: scale(1.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: scale(1.5);
   }
-
 
   .podcast-card {
     @apply flex flex-col bg-gray-800 rounded-lg p-4 shadow-md;
@@ -110,6 +101,7 @@ button:hover {
   .podcast-title {
     @apply text-lg font-semibold text-gray-100 mb-2;
   }
+
   .audio-controls {
     @apply flex items-center justify-between mt-2;
   }
@@ -132,12 +124,12 @@ button:hover {
     font-size: 16px;
     width: fit-content; /* Ensures the button only takes as much space as needed */
     max-width: 200px; /* Optional: Set a max-width to prevent it from being too large */
-  } 
-  
+  }
+
   .update-button.loading {
     background-color: #aaaaaa;
     cursor: not-allowed;
-  }  
+  }
 
   .icon-button {
     @apply p-2 rounded-full hover:bg-gray-700 cursor-pointer;
@@ -150,15 +142,15 @@ button:hover {
   .thumbnail {
     @apply w-full h-40 object-cover rounded-lg mb-3;
   }
-  
+
   .container {
     @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
   }
-  
+
   .btn-primary {
     @apply bg-blue-500 text-white font-bold py-2 px-4 rounded;
   }
-  
+
   .btn-primary:hover {
     @apply bg-blue-700;
   }
@@ -170,11 +162,11 @@ button:hover {
   .btn-secondary:hover {
     @apply bg-green-700;
   }
-  
+
   .text-accent {
     @apply text-purple-500;
   }
-  
+
   .bg-accent {
     @apply bg-purple-500;
   }
@@ -182,6 +174,6 @@ button:hover {
 
 @media (max-width: 768px) {
   body {
-    background-image: linear-gradient(90deg, #BD24DF 0%, #2D6ADE 97.15%);
+    background-image: linear-gradient(90deg, rgb(var(--background-start-rgb)) 0%, rgb(var(--background-end-rgb)) 100%);
   }
 }

@@ -22,6 +22,8 @@ const config: Config = {
         navyblue: '#13224f',
         lightwhite: '#d0d3db',
         darkblue: '#091945',
+        orange: '#F6821B',
+        lightorange:'#FBD6B6',
         green: {
           ...colors.green,
           50: '#F0FDF4',

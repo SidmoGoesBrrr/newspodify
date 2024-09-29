@@ -35,22 +35,21 @@ const Header = () => {
     };
 
     return (
-        <nav className="relative flex justify-between items-center max-w-7xl mx-auto px-6 py-5 bg-gray-800 text-white">
+        <nav className="relative flex justify-between items-center max-w-6xl text-xl mx-auto px-6 py-5 text-white">
             <Link href="/" className="flex flex-row items-center">
                 <Image
                     src="/nsp_logo.png"
                     alt="logo"
-                    width={50}
-                    height={50}
-                    className="bg-white rounded-full"
+                    width={75}
+                    height={75}
+                    className="rounded-full"
                 />
-                <span className="ml-2 text-xl font-semibold">Newspodify</span>
             </Link>
             <ul className="hidden lg:flex gap-8">
                 {NAV_LINKS.map((link) => (
                     <li key={link.key}>
                         <div onClick={() => handleLinkClick(link.href)}>
-                            <a className="text-slate-300 hover:text-slate-50 transition-all text-lg hover:font-bold hover:text-xl">
+                            <a className="text-slate-5 hover:text-orange transition-all text-xl hover:font-bold hover:text-xl">
                                 {link.label}
                             </a>
                         </div>
@@ -58,20 +57,21 @@ const Header = () => {
                 ))}
             </ul>
             <div className="lg:flex items-center">
-                <Link href="/dashboard" className="hidden lg:flex items-center bg-slate-400 text-slate-50 py-2 px-4 rounded-full hover:bg-gray-700 hover:scale-125 transition-all">
+                <Link href="/dashboard" className="hidden lg:flex items-center bg-orange text-white py-2 px-4 rounded-full hover:bg-gray-700 hover:scale-125 transition-all">
                     Try Version 0.0.1
                 </Link>
             </div>
             <div className="hidden lg:flex items-center">
                 <SignedOut>
-                    <SignInButton />
+                    <SignInButton /> {/* Adjust size */}
                 </SignedOut>
                 <SignedIn>
-                    <div className="user-button-wrapper">
-                        <UserButton />
+                    <div className="user-button-wrapper"> {/* Adjust size */}
+                    <UserButton />
                     </div>
                 </SignedIn>
-            </div>
+                </div>
+
             <div className="lg:hidden">
                 <Image
                     src="/menu.svg"

@@ -6,8 +6,7 @@ import SectionHeader from "./ui/section-headers";
 const FAQSection = () => {
   return (
     <div className="container mx-auto py-12 px-4 md:px-0" id="faq">
-      <SectionHeader text="Frequently Asked Questions"/>
-
+      <SectionHeader text="Frequently Asked Questions" className="text-orange"/>
       <div>
         <FAQAccordion />
       </div>
