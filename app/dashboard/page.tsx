@@ -9,26 +9,38 @@ export default function MainPage() {
   const [newsletters, setNewsletters] = useState<string[]>([]);
   const [filenamesMap, setFilenamesMap] = useState<Record<string, string[]>>({});
   const [isUpdating, setIsUpdating] = useState(false);
-
+  const [updateSuccess, setUpdateSuccess] = useState(false);
   useEffect(() => {
-    const fetchNewsletters = async () => {
-      const res = await fetch('/api/get-newsletters');
-      if (!res.ok) {
-        console.error('Error fetching newsletters');
-        return;
+    const fetchData = async () => {
+      try {
+        const res = await fetch('/api/get-newsletters');
+        if (!res.ok) {
+          throw new Error('Error fetching newsletters');
+        }
+        const data = await res.json();
+        setNewsletters(data.newsletters || []);
+  
+        // Fetch filenamesMap based on newsletters
+        const map = await getFilenamesMap(data.newsletters || []);
+        console.log('Filenames Map:', map); // Debugging
+        setFilenamesMap(map);
+      } catch (err) {
+        console.error(err);
       }
-      const data = await res.json();
-      setNewsletters(data.newsletters || []);
     };
-
-    fetchNewsletters();
+  
+    fetchData();
   }, []);
-
+  
   const handleUpdateNewsletters = async () => {
     setIsUpdating(true);
+    setUpdateSuccess(false);
+  
     try {
       const map = await getFilenamesMap(newsletters);
+      console.log('Updated Filenames Map:', map); // Debugging
       setFilenamesMap(map);
+      setUpdateSuccess(true);
     } catch (error) {
       console.error('Error fetching filenames map:', error);
     } finally {
@@ -69,8 +81,14 @@ export default function MainPage() {
         className={`update-button ${isUpdating ? 'loading' : ''}`}
       >
         {isUpdating ? 'Updating...' : 'Update Newsletters'}
-      </button>
-      <WeeklyPodcast filenamesMap={filenamesMap} newsletters={newsletters}/>
+
+      </button> 
+      {updateSuccess && (
+        <div className="confirmation-message text-green-600">
+          Newsletters updated successfully!
+        </div>
+      )}
+      <WeeklyPodcast filenamesMap={filenamesMap} newsletters={newsletters} />
     </div>
   );
 }
