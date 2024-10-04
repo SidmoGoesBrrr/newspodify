@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Progress } from '@/components/ui/progress';
 import React from 'react';
 import { ScaleLoader } from 'react-spinners';
-import {newsletters as allNewsletters} from '@/data/constants'
+import { newsletters as allNewsletters } from '@/data/constants'
 
 interface WeeklyPodcastProps {
   filenamesMap: Record<string, string[]>;
@@ -34,13 +34,13 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, newsletters
   // Create the clipId based on date and newsletter codes
   const getClipId = (selectedNewsletterNames: string[]): string => {
     const date = getCurrentDate();
-    
+
     // Filter the newsletter codes based on the names in selectedNewsletterNames
     const newsletterCodes = allNewsletters
-        .filter(newsletter => selectedNewsletterNames.includes(newsletter.name))
-        .map(newsletter => newsletter.code)
-        .join('');
-    
+      .filter(newsletter => selectedNewsletterNames.includes(newsletter.name))
+      .map(newsletter => newsletter.code)
+      .join('');
+
     return `${date}${newsletterCodes}`;
   };
 
@@ -52,7 +52,7 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, newsletters
     try {
       const response = await fetch('/api/combine-audio', {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
           'Clip-ID': clipId, // Pass clipId in the headers
         },
@@ -121,16 +121,23 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, newsletters
 
   const forward = () => {
     const audioElement = audioRef.current;
-    if (audioElement) {
-        audioElement.currentTime = Math.min(audioElement.currentTime + 5, duration || 0);
+    if (audioElement && duration !== null) {
+      audioElement.currentTime = Math.min(audioElement.currentTime + 5, duration);
     }
   };
 
   const rewind = () => {
     const audioElement = audioRef.current;
     if (audioElement) {
-      audioElement.currentTime = Math.min(audioElement.currentTime - 5, 0);
+      console.log(audioElement.currentTime);
+      audioElement.currentTime = Math.max(audioElement.currentTime - 5, 0);
+      console.log(audioElement.currentTime);
     }
+  };
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
   };
 
   const today = new Date();
@@ -148,11 +155,18 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, newsletters
   const title = `${formatDate(lastWeek)} - ${formatDate(today)}`;
 
   return (
-    <section className="mt-10 flex flex-col">
+    <section className="mt-10 flex flex-col mb-12">
       <h1 className="text-white text-3xl font-bold mb-4">Weekly Combined Podcast</h1>
+
+      {/* Add the conditional message here */}
+      {Object.keys(filenamesMap).length === 0 && (
+        <p className="text-white mt-4">No newsletters selected or filenames not available.</p>
+      )}
+
       <button
         onClick={handleCombineAudio}
-        className={`update-button mb-4 ${isCombining ? 'loading' : ''}`}
+        className={`update-button mb-4 ${isCombining ? 'bg-gray-500 cursor-not-allowed' : 'bg-blue-500'}`}
+        disabled={isCombining} // Temporarily remove the filenamesMap check
       >
         {isCombining ? 'Combining...' : 'Combine Audio'}
       </button>
@@ -172,51 +186,20 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, newsletters
             max={100}
           />
           <div className="audio-controls flex items-center justify-between mt-2">
+            <span className="text-white">{formatTime(currentTime)} / {formatTime(duration || 0)}</span>
             <div className="flex items-center gap-2">
-              <button
-                onClick={rewind}
-                className="icon-button p-2 rounded-full hover:bg-gray-700"
-              >
-                <Image
-                  src="/icons/reverse.svg"
-                  alt="Rewind"
-                  width={24}
-                  height={24}
-                />
+              <button onClick={rewind} className="icon-button p-2 rounded-full hover:bg-gray-700">
+                <Image src="/icons/reverse.svg" alt="Rewind" width={24} height={24} />
               </button>
-              <button
-                onClick={handlePlayPause}
-                className={`icon-button p-2 rounded-full hover:bg-gray-700 ${isPlaying ? 'font-bold' : ''}`}
-              >
-                <Image
-                  src={isPlaying ? "/icons/Pause.svg" : "/icons/Play.svg"}
-                  alt={isPlaying ? "Pause" : "Play"}
-                  width={24}
-                  height={24}
-                />
+              <button onClick={handlePlayPause} className={`icon-button p-2 rounded-full hover:bg-gray-700 ${isPlaying ? 'font-bold' : ''}`}>
+                <Image src={isPlaying ? "/icons/Pause.svg" : "/icons/Play.svg"} alt={isPlaying ? "Pause" : "Play"} width={24} height={24} />
               </button>
-              <button
-                onClick={forward}
-                className="icon-button p-2 rounded-full hover:bg-gray-700"
-              >
-                <Image
-                  src="/icons/forward.svg"
-                  alt="Forward"
-                  width={24}
-                  height={24}
-                />
+              <button onClick={forward} className="icon-button p-2 rounded-full hover:bg-gray-700">
+                <Image src="/icons/forward.svg" alt="Forward" width={24} height={24} />
               </button>
             </div>
-            <button
-              onClick={toggleMute}
-              className="icon-button p-2 rounded-full hover:bg-gray-700"
-            >
-              <Image
-                src={isMuted ? "/icons/unmute.svg" : "/icons/mute.svg"}
-                alt={isMuted ? "Unmute" : "Mute"}
-                width={24}
-                height={24}
-              />
+            <button onClick={toggleMute} className="icon-button p-2 rounded-full hover:bg-gray-700">
+              <Image src={isMuted ? "/icons/unmute.svg" : "/icons/mute.svg"} alt={isMuted ? "Unmute" : "Mute"} width={24} height={24} />
             </button>
           </div>
         </div>
