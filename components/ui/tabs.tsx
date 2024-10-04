@@ -1,127 +1,56 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { FC, useState } from "react";
 import cn from "@/utils/cn";
 
 type Tab = {
   title: string;
   value: string;
-  content?: string | React.ReactNode | any;
+  content?: string | React.ReactNode;
 };
 
-export const Tabs = ({
-  tabs: propTabs,
-  containerClassName,
-  activeTabClassName,
-  tabClassName,
-  contentClassName,
-}: {
+interface TabsProps {
   tabs: Tab[];
   containerClassName?: string;
-  activeTabClassName?: string;
   tabClassName?: string;
   contentClassName?: string;
+}
+
+export const Tabs: FC<TabsProps> = ({
+  tabs,
+  containerClassName,
+  tabClassName,
+  contentClassName,
 }) => {
-  const [active, setActive] = useState<Tab>(propTabs[0]);
-  const [tabs, setTabs] = useState<Tab[]>(propTabs);
-
-  const moveSelectedTabToTop = (idx: number) => {
-    const newTabs = [...propTabs];
-    const selectedTab = newTabs.splice(idx, 1);
-    newTabs.unshift(selectedTab[0]);
-    setTabs(newTabs);
-    setActive(newTabs[0]);
-  };
-
-  const [hovering, setHovering] = useState(false);
+  const [activeTab, setActiveTab] = useState<string | null>(null); // Set initial active tab
+  const [hoveredTab, setHoveredTab] = useState<string | null>(null); // State for hovered tab
 
   return (
-    <div className="flex flex-col h-full">
-      <div
-        className={cn(
-          "flex items-center justify-start flex-wrap gap-2 overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
-          containerClassName
-        )}
-      >
-        {propTabs.map((tab, idx) => (
-          <button
-            key={tab.title}
-            onClick={() => moveSelectedTabToTop(idx)}
-            onMouseEnter={() => setHovering(true)}
-            onMouseLeave={() => setHovering(false)}
-            className={cn(
-              "relative px-4 py-2 rounded-full min-w-[100px] h-[40px]", // Set consistent height and minimum width
-              tabClassName
+    <div className={cn("ag-format-container", containerClassName)}>
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {tabs.map((tab) => (
+          <div key={tab.value} className="ag-courses_item flex-auto">
+            <button
+              className={cn("ag-courses-item_link w-full", tabClassName, {
+                "hover:bg-gray-300": hoveredTab === tab.value, // Add hover class
+              })}
+              onClick={() => setActiveTab(activeTab === tab.value ? null : tab.value)} // Toggle active tab
+              onMouseEnter={() => setHoveredTab(tab.value)} // Set hovered tab
+              onMouseLeave={() => setHoveredTab(null)} // Reset hovered tab
+            >
+              <div className="ag-courses-item_bg"></div>
+              <div className="ag-courses-item_title text-left">{tab.title}</div>
+            </button>
+
+            {/* Content should appear below the button, outside the button element */}
+            {activeTab === tab.value && (
+              <div className={cn("tab-content mt-4 p-4 rounded shadow-md", contentClassName)}>
+                {tab.content}
+              </div>
             )}
-            style={{
-              transformStyle: "preserve-3d",
-              flexShrink: 0, // Prevents tabs from shrinking
-            }}
-          >
-            {active.value === tab.value && (
-              <motion.div
-                layoutId="clickedbutton"
-                transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
-                className={cn(
-                  "absolute inset-0 bg-slate-400 rounded-full",
-                  activeTabClassName
-                )}
-              />
-            )}
-            <span className="relative block text-black dark:text-white">
-              {tab.title}
-            </span>
-          </button>
+          </div>
         ))}
       </div>
-
-      <div className="flex-grow mt-4">
-        <FadeInDiv
-          tabs={tabs}
-          active={active}
-          key={active.value}
-          hovering={hovering}
-          className={cn("w-full h-full flex-grow", contentClassName)}
-        />
-      </div>
-    </div>
-  );
-};
-
-export const FadeInDiv = ({
-  className,
-  tabs,
-  active,
-  hovering,
-}: {
-  className?: string;
-  tabs: Tab[];
-  active: Tab;
-  hovering?: boolean;
-}) => {
-  const isActive = (tab: Tab) => tab.value === active.value;
-
-  return (
-    <div className="relative w-full h-full">
-      {tabs.map((tab, idx) => (
-        <motion.div
-          key={tab.value}
-          layoutId={tab.value}
-          style={{
-            scale: 1 - idx * 0.1,
-            top: hovering ? idx * -20 : 0,
-            zIndex: -idx,
-            opacity: idx < 3 ? 1 - idx * 0.1 : 0,
-          }}
-          animate={{
-            y: isActive(tab) ? [0, 20, 0] : 0,
-          }}
-          className={cn("w-full h-full absolute top-0 left-0", className)}
-        >
-          {tab.content}
-        </motion.div>
-      ))}
     </div>
   );
 };

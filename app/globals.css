@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Color Variables */
 :root {
   --foreground-rgb: 0, 0, 0; /* Default text color (black) */
   --background-start-rgb: 255, 132, 0; /* Orange background start */
@@ -22,12 +23,12 @@
   }
 }
 
+/* Body styles */
 body {
   background-color: #000; /* Pure black background */
   background-image: linear-gradient(180deg, rgb(var(--background-start-rgb)) 0%, rgb(var(--background-end-rgb)) 100%);
   background-blend-mode: overlay;
   color: rgb(var(--foreground-rgb));
-  font-family: 'Roboto', sans-serif; /* Switch to Roboto for body text */
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -54,7 +55,8 @@ button:hover {
   color: #FBD6B6; /* Use primary orange for accordion questions */
 }
 
-.my-accordion-item-background, .my-accordion-item-background * {
+.my-accordion-item-background,
+.my-accordion-item-background * {
   background-color: transparent; /* Transparent background for sleek look */
 }
 
@@ -66,19 +68,143 @@ button:hover {
   color: rgb(var(--foreground-rgb)); /* Regular text color */
 }
 
-.my-accordion-item-active, .my-accordion-item-active * {
+.my-accordion-item-active,
+.my-accordion-item-active * {
   background-color: rgb(var(--accent-rgb)); /* Dark blue for active state */
 }
 
-.tabs-container {
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); /* Adjust minmax value as needed */
-}
-
+/* Additional Utilities */
 @layer base {
   html {
     @apply scroll-smooth;
+  }
+}
+
+/* Container styles */
+.ag-format-container {
+  width: 1142px;
+  margin: 0 auto;
+}
+
+.ag-courses_box {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 50px 0;
+}
+
+.ag-courses_item {
+  flex-basis: calc(33.33333% - 30px);
+  margin: 0 15px 30px;
+  overflow: hidden;
+  border-radius: 28px;
+}
+
+.ag-courses-item_link {
+  display: block;
+  padding: 30px 20px;
+  background-color: #121212;
+  overflow: hidden;
+  position: relative;
+}
+
+.ag-courses-item_link:hover,
+.ag-courses-item_link:hover .ag-courses-active {
+  text-decoration: none;
+  color: #FFF;
+}
+
+.ag-courses-item_link:hover .ag-courses-item_bg {
+  transform: scale(10);
+}
+
+.ag-courses-item_title {
+  min-height: 87px;
+  margin: 0 0 25px;
+  overflow: hidden;
+  font-weight: bold;
+  font-size: 30px;
+  color: #FFF;
+  z-index: 2;
+  position: relative;
+}
+
+.ag-courses-item_date-box {
+  font-size: 18px;
+  color: #FFF;
+  z-index: 2;
+  position: relative;
+}
+
+.ag-courses-item_date {
+  font-weight: bold;
+  color: #f9b234;
+  transition: color .5s ease;
+}
+
+.ag-courses-item_bg {
+  height: 128px;
+  width: 128px;
+  background-color: #f9b234;
+  z-index: 1;
+  position: absolute;
+  top: -75px;
+  right: -75px;
+  border-radius: 50%;
+  transition: all .5s ease;
+}
+
+/* Background color for different items */
+.ag-courses_item:nth-child(2n) .ag-courses-item_bg {
+  background-color: #3ecd5e;
+}
+
+.ag-courses_item:nth-child(3n) .ag-courses-item_bg {
+  background-color: #e44002;
+}
+
+.ag-courses_item:nth-child(4n) .ag-courses-item_bg {
+  background-color: #952aff;
+}
+
+.ag-courses_item:nth-child(5n) .ag-courses-item_bg {
+  background-color: #cd3e94;
+}
+
+.ag-courses_item:nth-child(6n) .ag-courses-item_bg {
+  background-color: #4c49ea;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 979px) {
+  .ag-courses_item {
+    flex-basis: calc(50% - 30px);
+  }
+  .ag-courses-item_title {
+    font-size: 24px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .ag-format-container {
+    width: 96%;
+  }
+}
+
+@media only screen and (max-width: 639px) {
+  .ag-courses_item {
+    flex-basis: 100%;
+  }
+  .ag-courses-item_title {
+    min-height: 72px;
+    line-height: 1;
+    font-size: 24px;
+  }
+  .ag-courses-item_link {
+    padding: 22px 40px;
+  }
+  .ag-courses-item_date-box {
+    font-size: 16px;
   }
 }
 
@@ -172,6 +298,7 @@ button:hover {
   }
 }
 
+/* Background change for small screens */
 @media (max-width: 768px) {
   body {
     background-image: linear-gradient(90deg, rgb(var(--background-start-rgb)) 0%, rgb(var(--background-end-rgb)) 100%);

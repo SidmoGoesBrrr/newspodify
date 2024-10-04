@@ -122,18 +122,14 @@ const WeeklyPodcast: React.FC<WeeklyPodcastProps> = ({ filenamesMap, newsletters
   const forward = () => {
     const audioElement = audioRef.current;
     if (audioElement) {
-        console.log(audioElement.currentTime);
         audioElement.currentTime = Math.min(audioElement.currentTime + 5, duration || 0);
-        console.log(audioElement.currentTime);
     }
   };
 
   const rewind = () => {
     const audioElement = audioRef.current;
     if (audioElement) {
-      console.log(audioElement.currentTime);
       audioElement.currentTime = Math.min(audioElement.currentTime - 5, 0);
-      console.log(audioElement.currentTime);
     }
   };
 
