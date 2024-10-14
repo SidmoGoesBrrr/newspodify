@@ -16,36 +16,11 @@ export async function POST(req: NextRequest) {
     }
 
     // Parse JSON body
-    const { newsletter, action } = await req.json();
+    const { newsletters } = await req.json();
     
-    if (!newsletter || !action) {
-      return NextResponse.json({ error: 'Newsletter or action missing' }, { status: 400 });
-    }
-
-    // Fetch current newsletters
-    const { data, error: fetchError } = await supabase
-      .from('customers')
-      .select('newsletters')
-      .eq('user_id', userId)
-      .single(); // Ensure only one record is returned
-
-    if (fetchError) {
-      console.error('Error fetching user:', fetchError.message);
-      return NextResponse.json({ error: fetchError.message }, { status: 500 });
-    }
-
-    let newsletters: string[] = data.newsletters || [];
-
-    if (action === 'add') {
-      if (!newsletters.includes(newsletter)) {
-        newsletters.push(newsletter);
-      } else {
-        return NextResponse.json({ message: 'Newsletter already added', newsletters }, { status: 200 });
-      }
-    } else if (action === 'remove') {
-      newsletters = newsletters.filter(n => n !== newsletter);
-    } else {
-      return NextResponse.json({ error: 'Invalid action' }, { status: 400 });
+    // Ensure newsletters is provided and is an array
+    if (!Array.isArray(newsletters)) {
+      return NextResponse.json({ error: 'Invalid newsletters format' }, { status: 400 });
     }
 
     // Update newsletters in the database
